@@ -1,0 +1,30 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "check": "next build --dry-run",
+    "clean": "rm -rf .next out node_modules/.cache",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.553.0",
+    "next": "16.0.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.3",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0"
+  }
+}
