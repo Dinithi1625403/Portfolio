@@ -1,12 +1,12 @@
 export const portfolioData = {
   personal: {
-    name: "John Doe",
-    title: "Full Stack Developer",
-    subtitle: "Passionate Developer & Problem Solver",
-    bio: "I am a dedicated full stack developer with 5+ years of experience in creating robust, scalable web applications. I specialize in modern JavaScript frameworks and have a passion for clean code, user experience, and innovative solutions. My journey in tech started with a curiosity for how things work, which has evolved into a career focused on building digital solutions that make a real impact.",
-    location: "San Francisco, CA",
-    email: "john.doe@example.com",
-    phone: "+1 (555) 123-4567",
+    name: "Dinithi Dewmini",
+    title: "Information Technology Student",
+    subtitle: "Passionate about harnessing technology to solve real-world problems",
+    bio: "Hello! I'm Dinithi Dewmini, currently pursuing my undergraduate degree in Information Technology at the University of Moratuwa. Passionate about harnessing technology to solve real-world problems, I am constantly exploring new developments in the IT landscape and how they can be applied innovatively. I'm always eager to connect with like-minded professionals, mentors, and industry experts to exchange ideas, collaborate on projects, and explore potential career opportunities.",
+    location: "Gampaha District, Western Province, Sri Lanka",
+    email: "dinithi1625403@gmail.com",
+    phone: "", // Not provided
     profileImage: "/api/placeholder/300/300", // You can replace this with your actual photo
   },
   
@@ -14,44 +14,36 @@ export const portfolioData = {
     {
       name: "GitHub",
       icon: "Github",
-      url: "https://github.com/johndoe",
+      url: "https://github.com/dinithidewmini", // Update with actual GitHub URL
       color: "hover:text-gray-400"
     },
     {
       name: "LinkedIn",
       icon: "Linkedin",
-      url: "https://linkedin.com/in/johndoe",
+      url: "https://www.linkedin.com/in/dinithi-dewmini-30280327b",
       color: "hover:text-blue-500"
-    },
-    {
-      name: "Twitter",
-      icon: "Twitter",
-      url: "https://twitter.com/johndoe",
-      color: "hover:text-blue-400"
     },
     {
       name: "Email",
       icon: "Mail",
-      url: "mailto:john.doe@example.com",
+      url: "mailto:dinithi1625403@gmail.com",
       color: "hover:text-green-500"
     }
   ],
-
   technicalSkills: [
-    { name: "JavaScript", level: 95, category: "Frontend" },
-    { name: "React", level: 90, category: "Frontend" },
-    { name: "Next.js", level: 85, category: "Frontend" },
-    { name: "TypeScript", level: 88, category: "Frontend" },
-    { name: "HTML/CSS", level: 95, category: "Frontend" },
-    { name: "Tailwind CSS", level: 90, category: "Frontend" },
-    { name: "Node.js", level: 85, category: "Backend" },
-    { name: "Express.js", level: 82, category: "Backend" },
-    { name: "Python", level: 80, category: "Backend" },
-    { name: "PostgreSQL", level: 85, category: "Database" },
-    { name: "MongoDB", level: 80, category: "Database" },
-    { name: "Git", level: 90, category: "Tools" },
-    { name: "Docker", level: 75, category: "Tools" },
-    { name: "AWS", level: 70, category: "Tools" }
+    { name: "Figma", level: 90, category: "Design" },
+    { name: "UI/UX Design", level: 85, category: "Design" },
+    { name: "Next.js", level: 80, category: "Frontend" },
+    { name: "JavaScript", level: 75, category: "Frontend" },
+    { name: "React", level: 75, category: "Frontend" },
+    { name: "HTML/CSS", level: 85, category: "Frontend" },
+    { name: "Tailwind CSS", level: 70, category: "Frontend" },
+    { name: "C Programming", level: 70, category: "Backend" },
+    { name: "Java", level: 65, category: "Backend" },
+    { name: "Cloud Computing", level: 60, category: "Cloud" },
+    { name: "Google Analytics", level: 70, category: "Analytics" },
+    { name: "Project Management", level: 75, category: "Management" },
+    { name: "Git", level: 70, category: "Tools" }
   ],
 
   softSkills: [
@@ -59,111 +51,129 @@ export const portfolioData = {
     "Team Collaboration",
     "Communication",
     "Project Management",
-    "Mentoring",
+    "Leadership",
     "Adaptability",
     "Critical Thinking",
-    "Leadership"
+    "Innovation",
+    "Time Management",
+    "Mentoring"
   ],
 
+  certifications: [
+    "JavaScript Intermediate",
+    "Project Management Foundation", 
+    "Introduction to Cloud Computing",
+    "Introduction to C",
+    "Google Analytics for Beginners"
+  ],
+
+  achievements: [
+    "Winner of Nadhaya Imagine AI Competition",
+    "Diploma in English Language and Literature",
+    "Semifinalist of hack X 9.0 2024", 
+    "Finalist – InspiHER(tech) v3.0",
+    "Top 12 Finalist – Devthon 2.0"
+  ],
   projects: [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-featured e-commerce platform built with Next.js and Stripe integration. Features include user authentication, shopping cart, payment processing, and admin dashboard.",
-      technologies: ["Next.js", "React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+      title: "AI Innovation Project",
+      description: "Winner project from Nadhaya Imagine AI Competition showcasing innovative AI solutions for real-world problems.",
+      technologies: ["AI/ML", "Python", "Next.js", "Figma"],
       image: "/api/placeholder/600/400",
-      liveUrl: "https://ecommerce-demo.vercel.app",
-      githubUrl: "https://github.com/johndoe/ecommerce-platform",
+      liveUrl: "", // Update with actual URL when available
+      githubUrl: "", // Update with actual GitHub URL
       featured: true
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      technologies: ["React", "TypeScript", "Socket.io", "Express.js", "PostgreSQL"],
+      title: "HackX 9.0 Project",
+      description: "Semifinalist project from HackX 9.0 2024 competition, demonstrating technical skills and innovation in problem-solving.",
+      technologies: ["JavaScript", "React", "Next.js", "UI/UX"],
       image: "/api/placeholder/600/400",
-      liveUrl: "https://taskmanager-demo.netlify.app",
-      githubUrl: "https://github.com/johndoe/task-manager",
+      liveUrl: "", // Update with actual URL when available
+      githubUrl: "", // Update with actual GitHub URL
       featured: true
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard that displays current conditions and forecasts using weather APIs with beautiful data visualizations.",
-      technologies: ["React", "Chart.js", "OpenWeather API", "CSS Modules"],
+      title: "InspiHER(tech) v3.0 Project",
+      description: "Finalist project showcasing women in technology and innovative solutions for tech challenges.",
+      technologies: ["React", "JavaScript", "Figma", "UI/UX"],
       image: "/api/placeholder/600/400",
-      liveUrl: "https://weather-dash.netlify.app",
-      githubUrl: "https://github.com/johndoe/weather-dashboard",
-      featured: false
+      liveUrl: "", // Update with actual URL when available
+      githubUrl: "", // Update with actual GitHub URL
+      featured: true
     },
     {
       id: 4,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website built with Next.js featuring smooth animations and optimized performance.",
-      technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Vercel"],
+      title: "Devthon 2.0 Project",
+      description: "Top 12 finalist project from Devthon 2.0, demonstrating development skills and innovative thinking.",
+      technologies: ["Next.js", "JavaScript", "UI/UX Design", "Project Management"],
       image: "/api/placeholder/600/400",
-      liveUrl: "https://johndoe-portfolio.vercel.app",
-      githubUrl: "https://github.com/johndoe/portfolio",
+      liveUrl: "", // Update with actual URL when available
+      githubUrl: "", // Update with actual GitHub URL
       featured: false
     }
   ],
 
   experience: [
     {
-      company: "Tech Solutions Inc.",
-      position: "Senior Full Stack Developer",
-      duration: "2022 - Present",
-      description: "Led development of multiple client projects, mentored junior developers, and implemented best practices for code quality and team productivity.",
+      company: "University Projects & Competitions",
+      position: "Student Developer & Competitor",
+      duration: "2024 - Present",
+      description: "Actively participating in various tech competitions and hackathons, developing innovative solutions and collaborating with diverse teams.",
       achievements: [
-        "Increased application performance by 40% through code optimization",
-        "Led a team of 5 developers on a major client project",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
+        "Winner of Nadhaya Imagine AI Competition",
+        "Semifinalist of hack X 9.0 2024",
+        "Finalist – InspiHER(tech) v3.0",
+        "Top 12 Finalist – Devthon 2.0"
       ]
     },
     {
-      company: "Digital Agency Co.",
-      position: "Full Stack Developer",
-      duration: "2020 - 2022",
-      description: "Developed and maintained web applications for various clients, focusing on responsive design and performance optimization.",
+      company: "Freelance & Personal Projects",
+      position: "UI/UX Designer & Developer",
+      duration: "2023 - Present", 
+      description: "Working on various UI/UX design projects and web development, focusing on user-centered design and modern web technologies.",
       achievements: [
-        "Built 15+ responsive websites for diverse client base",
-        "Reduced page load times by 50% across all projects",
-        "Collaborated with design team to implement pixel-perfect UIs"
-      ]
-    },
-    {
-      company: "Startup Ventures",
-      position: "Junior Developer",
-      duration: "2019 - 2020",
-      description: "Started as a junior developer, quickly progressed to handling full-stack responsibilities and contributing to architectural decisions.",
-      achievements: [
-        "Developed key features for the company's main product",
-        "Improved test coverage from 30% to 85%",
-        "Participated in code reviews and knowledge sharing sessions"
+        "Developed proficiency in Figma and modern design principles",
+        "Built projects using Next.js and React",
+        "Gained expertise in JavaScript and frontend technologies"
       ]
     }
   ],
 
   education: [
     {
-      institution: "University of Technology",
-      degree: "Bachelor of Science in Computer Science",
-      duration: "2015 - 2019",
-      gpa: "3.8/4.0"
+      institution: "University of Moratuwa",
+      degree: "Bachelor of Science Honors in Information Technology",
+      duration: "March 2024 - 2028",
+      gpa: "" // Not provided
+    },
+    {
+      institution: "Aquinas College of Higher Studies",
+      degree: "Diploma in English Language and Literature",
+      duration: "2023 - 2024",
+      gpa: ""
+    },
+    {
+      institution: "Rathnavali Balika Vidyalaya Gampaha",
+      degree: "Advanced Level - Physical Sciences",
+      duration: "2013 - 2023",
+      gpa: ""
     }
   ],
-
   testimonials: [
     {
-      name: "Sarah Johnson",
-      position: "Project Manager at Tech Solutions Inc.",
-      text: "John is an exceptional developer who consistently delivers high-quality code. His ability to understand complex requirements and translate them into elegant solutions is remarkable.",
+      name: "Competition Judge",
+      position: "Nadhaya Imagine AI Competition",
+      text: "Dinithi demonstrated exceptional creativity and technical skills in the AI competition. Her innovative approach to problem-solving and ability to implement complex solutions stood out among all participants.",
       avatar: "/api/placeholder/80/80"
     },
     {
-      name: "Mike Chen",
-      position: "Lead Designer at Digital Agency Co.",
-      text: "Working with John was a pleasure. He has great attention to detail and always ensures that the final product matches the design perfectly while maintaining excellent performance.",
+      name: "Mentor",
+      position: "University of Moratuwa - Faculty of IT",
+      text: "As a student, Dinithi shows remarkable dedication to learning and exploring new technologies. Her passion for innovation and collaborative spirit makes her an excellent team player and future tech leader.",
       avatar: "/api/placeholder/80/80"
     }
   ]

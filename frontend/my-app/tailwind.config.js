@@ -6,19 +6,30 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      colors: {
+    extend: {      colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#f3f1ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+        },
+        purple: {
+          50: '#faf7ff',
+          100: '#f3f0ff',
+          200: '#e9e5ff',
+          300: '#d6ccff',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#6b21a8',
+          900: '#581c87',
         },
         secondary: {
           50: '#f8fafc',
@@ -31,19 +42,31 @@ module.exports = {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
+        },
+        dark: {
+          50: '#1a1a2e',
+          100: '#16213e',
+          200: '#0f1419',
+          300: '#0a0a0f',
+          400: '#050507',
         }
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'Inter', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'Fira Code', 'monospace'],
-      },
-      animation: {
+      },      animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.5s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float-slow 8s ease-in-out infinite',
+        'float-medium': 'float-medium 6s ease-in-out infinite',
+        'float-fast': 'float-fast 4s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'purple-glow': 'purple-glow 3s ease-in-out infinite',
+        'morph': 'morph 8s ease-in-out infinite',
+        'shimmer': 'shimmer 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
