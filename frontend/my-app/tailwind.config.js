@@ -94,8 +94,14 @@ module.exports = {
           '100%': { boxShadow: '0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6' },
         },
       },      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'linear-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'linear-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      backdropBlur: {
+        'ultra': '100px',
+        'mega': '150px',
       },
     },
   },

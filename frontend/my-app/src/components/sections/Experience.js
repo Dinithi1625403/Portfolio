@@ -5,7 +5,7 @@ import { portfolioData } from '@/data/portfolioData';
 
 const Experience = () => {
   return (    
-    <section id="experience" className="py-20 bg-gradient-to-br from-black via-slate-900 to-purple-950/80 relative overflow-hidden">
+    <section id="experience" className="py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -45,11 +45,10 @@ const Experience = () => {
               <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
-            <div className="text-gray-400 text-sm font-medium">Experience_Timeline.log</div>
-            <div className="w-16"></div>
+            <div className="text-gray-400 text-sm font-medium">Experience_Timeline.log</div>            <div className="w-16"></div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 p-8 lg:p-12">
+          <div className="grid lg:grid-cols-3 gap-8 p-8 lg:p-12 bg-gradient-to-br from-purple-900/20 via-purple-800/10 to-purple-900/20">
           {/* Timeline */}
           <div className="lg:col-span-2">            
             <div className="relative">
@@ -72,12 +71,10 @@ const Experience = () => {
                       className="absolute left-4 w-4 h-4 bg-purple-500 rounded-full border-4 border-black shadow-lg shadow-purple-500/50"
                       whileHover={{ scale: 1.5, rotate: 360 }}
                       transition={{ duration: 0.3 }}
-                    />
-                    
-                    {/* Experience card */}
+                    />                    {/* Experience card */}
                     <motion.div
                       whileHover={{ y: -5 }}
-                      className="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20"
+                      className="bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-purple-900/40 backdrop-blur-sm rounded-xl p-6 border border-purple-500/30 hover:border-purple-400 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30"
                     >
                       {/* Header */}
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
@@ -128,44 +125,40 @@ const Experience = () => {
 
           {/* Sidebar with stats and info */}
           <div className="space-y-8">
-            {/* Career Stats */}
-            <motion.div
+            {/* Career Stats */}            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-secondary-700/30 rounded-xl p-6 border border-secondary-600"
-            >
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              className="bg-gradient-to-br from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/10"
+            >              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <TrendingUp className="text-primary-400" size={24} />
                 Career Highlights
               </h3>
               
-              <div className="space-y-6">
-                <div className="text-center p-4 bg-primary-500/10 rounded-lg border border-primary-500/20">
-                  <div className="text-3xl font-bold text-primary-400 mb-1">5+</div>
+              <div className="space-y-6">                <div className="text-center p-4 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-lg border border-purple-500/30 shadow-md shadow-purple-500/10">
+                  <div className="text-3xl font-bold text-purple-400 mb-1">5+</div>
                   <div className="text-gray-300 text-sm">Years Experience</div>
                 </div>
                 
-                <div className="text-center p-4 bg-primary-500/10 rounded-lg border border-primary-500/20">
-                  <div className="text-3xl font-bold text-primary-400 mb-1">50+</div>
+                <div className="text-center p-4 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-lg border border-purple-500/30 shadow-md shadow-purple-500/10">
+                  <div className="text-3xl font-bold text-purple-400 mb-1">50+</div>
                   <div className="text-gray-300 text-sm">Projects Delivered</div>
                 </div>
                 
-                <div className="text-center p-4 bg-primary-500/10 rounded-lg border border-primary-500/20">
-                  <div className="text-3xl font-bold text-primary-400 mb-1">15+</div>
+                <div className="text-center p-4 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-lg border border-purple-500/30 shadow-md shadow-purple-500/10">
+                  <div className="text-3xl font-bold text-purple-400 mb-1">15+</div>
                   <div className="text-gray-300 text-sm">Technologies Mastered</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Skills Growth */}
-            <motion.div
+            {/* Skills Growth */}            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
-              className="bg-secondary-700/30 rounded-xl p-6 border border-secondary-600"
+              className="bg-gradient-to-br from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/10"
             >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Users className="text-primary-400" size={24} />
@@ -192,13 +185,12 @@ const Experience = () => {
               </div>
             </motion.div>
 
-            {/* Current Status */}
-            <motion.div
+            {/* Current Status */}            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
-              className="bg-linear-to-r from-primary-500/10 to-primary-400/10 rounded-xl p-6 border border-primary-500/20"
+              className="bg-gradient-to-br from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/10"
             >
               <h3 className="text-xl font-bold text-white mb-4">Current Status</h3>
               <div className="space-y-3 text-sm">

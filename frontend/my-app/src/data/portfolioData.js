@@ -73,46 +73,89 @@ export const portfolioData = {
     "Semifinalist of hack X 9.0 2024", 
     "Finalist – InspiHER(tech) v3.0",
     "Top 12 Finalist – Devthon 2.0"
-  ],
-  projects: [
-    {
+  ],  projects: [    {
       id: 1,
-      title: "AI Innovation Project",
-      description: "Winner project from Nadhaya Imagine AI Competition showcasing innovative AI solutions for real-world problems.",
-      technologies: ["AI/ML", "Python", "Next.js", "Figma"],
-      image: "/api/placeholder/600/400",
-      liveUrl: "", // Update with actual URL when available
-      githubUrl: "", // Update with actual GitHub URL
+      title: "PetConnect",
+      description: "A web platform designed to connect pet lovers, facilitate adoptions, and create a supportive community. Users can browse pets available for adoption, view latest posts about lost or injured animals, and interact through a community wall.",
+      duration: "Jul 2025 - Present",
+      technologies: ["React"],
+      features: [
+        "Adoption Page: Browse pets available for adoption",
+        "Latest Posts: Updates about lost, wounded, or rescued pets",
+        "Community Wall: Share and interact with other pet lovers"
+      ],
+      image: "/petconnect.png",
+      liveUrl: "",
+      githubUrl: "https://github.com/Pet-connect-website/pet-connect-frontend",
       featured: true
     },
     {
       id: 2,
-      title: "HackX 9.0 Project",
-      description: "Semifinalist project from HackX 9.0 2024 competition, demonstrating technical skills and innovation in problem-solving.",
-      technologies: ["JavaScript", "React", "Next.js", "UI/UX"],
-      image: "/api/placeholder/600/400",
-      liveUrl: "", // Update with actual URL when available
-      githubUrl: "", // Update with actual GitHub URL
+      title: "Skill-Forge",
+      description: "A web platform designed to connect students and peers for skill learning and mentorship. Users can showcase their skills, request mentorship, engage in live chat, and track their learning journey through a personalized dashboard.",
+      duration: "Apr 2025 - Apr 2025",
+      technologies: ["Next.js", "Node.js"],
+      features: [
+        "Landing Page: Eye-catching introduction and easy navigation",
+        "Register/Login Page: Google OAuth integration for quick, secure access",
+        "Profile Setup: Students can add skills offered/requested, experience level, and bio",
+        "Student Dashboard: Track mentorships, skill exchanges, and progress",
+        "Live Chat: Real-time messaging to communicate before mentorship sessions",
+        "Mentorship Request: Search peers and request skill exchange sessions"
+      ],
+      image: "/skillForge.png",
+      liveUrl: "",
+      githubUrl: "https://github.com/Nipun-Yasas/Skill-Forge",
       featured: true
     },
     {
       id: 3,
-      title: "InspiHER(tech) v3.0 Project",
-      description: "Finalist project showcasing women in technology and innovative solutions for tech challenges.",
-      technologies: ["React", "JavaScript", "Figma", "UI/UX"],
-      image: "/api/placeholder/600/400",
-      liveUrl: "", // Update with actual URL when available
-      githubUrl: "", // Update with actual GitHub URL
+      title: "Image Gallery",
+      description: "An interactive web application that allows users to seamlessly view, organize, and manage their image collections with dynamic animations and visual effects for an enhanced user experience.",
+      duration: "Dec 2024 - Dec 2024",
+      technologies: ["HTML", "CSS", "JavaScript", "Canva"],
+      features: [
+        "Lightbox View: Enables users to view images in a pop-up overlay without leaving the page",
+        "Hover Effects: Adds dynamic animations and visual effects for an enhanced user experience",
+        "Captions/Descriptions: Displays contextual captions below each image for additional information",
+        "Grid Layout: A clean and organized grid format for effortless browsing"
+      ],
+      image: "/imgGallery.png",
+      liveUrl: "",
+      githubUrl: "https://github.com/Dinithi1625403/imageGallery",
       featured: true
     },
     {
       id: 4,
-      title: "Devthon 2.0 Project",
-      description: "Top 12 finalist project from Devthon 2.0, demonstrating development skills and innovative thinking.",
-      technologies: ["Next.js", "JavaScript", "UI/UX Design", "Project Management"],
-      image: "/api/placeholder/600/400",
-      liveUrl: "", // Update with actual URL when available
-      githubUrl: "", // Update with actual GitHub URL
+      title: "To-do-list Application",
+      description: "A feature-rich To-Do List application that allows users to categorize tasks into four distinct categories based on importance and urgency. Designed with a user-friendly interface and visually appealing design.",
+      duration: "Jun 2024 - Jul 2024",
+      technologies: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+      features: [
+        "Categorization of tasks: important and urgent, not important but urgent, important but not urgent, and not important and not urgent",
+        "User-friendly interface with a visually appealing design",
+        "Efficient use of HTML, CSS, Bootstrap, and JavaScript to create a responsive application"
+      ],
+      image: "/todolist.png",
+      liveUrl: "",
+      githubUrl: "https://github.com/Dinithi1625403/To-do-list",
+      featured: false
+    },
+    {
+      id: 5,
+      title: "Weather Forecast",
+      description: "A Weather Forecast App designed to provide accurate and real-time weather information. Built with a user-friendly interface and reliable data to help users plan their day effectively.",
+      duration: "Jun 2024 - Jun 2024",
+      technologies: ["HTML5", "CSS", "Bootstrap", "JavaScript"],
+      features: [
+        "Current Weather: Get real-time weather updates for your location",
+        "Hourly Forecast: Detailed hourly weather forecasts to help you plan your activities",
+        "Responsive Design: Seamless experience on any device, thanks to Bootstrap's responsive framework",
+        "Interactive Elements: Dynamic weather icons and interactive elements for a more immersive user experience"
+      ],
+      image: "/weather.png",
+      liveUrl: "",
+      githubUrl: "https://github.com/Dinithi1625403/weather",
       featured: false
     }
   ],

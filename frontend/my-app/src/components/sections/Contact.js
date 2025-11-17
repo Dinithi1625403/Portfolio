@@ -57,11 +57,10 @@ const Contact = () => {
       value: portfolioData.personal.location,
       href: '#',
       color: 'text-purple-400'
-    }
-  ];
+    }  ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-black via-slate-900 to-purple-950/80 relative overflow-hidden">
+    <section id="contact" className="py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -101,11 +100,10 @@ const Contact = () => {
               <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
-            <div className="text-gray-400 text-sm font-medium">Contact_Form.exe</div>
-            <div className="w-16"></div>
+            <div className="text-gray-400 text-sm font-medium">Contact_Form.exe</div>            <div className="w-16"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 p-8 lg:p-12">
+          <div className="grid lg:grid-cols-2 gap-12 p-8 lg:p-12 bg-gradient-to-br from-slate-900/50 via-purple-900/20 to-slate-900/50">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -126,8 +124,7 @@ const Contact = () => {
 
               {/* Contact Methods */}
               <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <motion.a
+                {contactInfo.map((info, index) => (                  <motion.a
                     key={info.label}
                     href={info.href}
                     initial={{ opacity: 0, y: 20 }}
@@ -135,7 +132,7 @@ const Contact = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.02, x: 10 }}
-                    className="flex items-center gap-4 p-4 bg-black/50 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 bg-gradient-to-r from-purple-900/40 via-purple-800/30 to-purple-900/40 rounded-xl border border-purple-500/30 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 group"
                   >
                     <div className={`p-3 rounded-lg bg-black/70 ${info.color} group-hover:scale-110 transition-transform`}>
                       <info.icon size={24} />
@@ -160,8 +157,7 @@ const Contact = () => {
                       Mail
                     }[social.icon];
 
-                    return (
-                      <motion.a
+                    return (                      <motion.a
                         key={social.name}
                         href={social.url}
                         target="_blank"
@@ -171,7 +167,7 @@ const Contact = () => {
                         transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.2, rotate: 360 }}
-                        className="p-3 bg-black/50 rounded-lg border border-white/10 hover:border-purple-500/50 text-gray-400 hover:text-purple-400 transition-all duration-300"
+                        className="p-3 bg-gradient-to-br from-purple-800/40 to-purple-900/40 rounded-lg border border-purple-500/30 hover:border-purple-400 text-gray-300 hover:text-purple-300 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
                       >
                         <IconComponent size={20} />
                       </motion.a>
@@ -180,17 +176,16 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Availability Status */}
-              <motion.div
+              {/* Availability Status */}              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-r from-green-500/10 to-purple-500/10 rounded-xl p-6 border border-green-500/20"
+                className="bg-gradient-to-br from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/10"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 font-semibold">Available for Work</span>
+                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                  <span className="text-purple-400 font-semibold">Available for Work</span>
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   I'm currently available for freelance projects and full-time opportunities. 
@@ -204,9 +199,8 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-black/30 rounded-xl p-8 border border-white/10">
+              viewport={{ once: true }}            >
+              <div className="bg-gradient-to-br from-slate-800/40 via-purple-900/20 to-slate-800/40 rounded-xl p-8 border border-purple-500/20 shadow-lg">
                 <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
                   <MessageSquare className="text-purple-400" size={28} />
                   Send a Message
@@ -229,15 +223,14 @@ const Contact = () => {
                     <div>
                       <label htmlFor="name" className="block text-white font-medium mb-2">
                         Your Name
-                      </label>
-                      <input
+                      </label>                      <input
                         type="text"
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all"
                         placeholder="John Doe"
                       />
                     </div>
@@ -261,15 +254,14 @@ const Contact = () => {
                   <div>
                     <label htmlFor="subject" className="block text-white font-medium mb-2">
                       Subject
-                    </label>
-                    <input
+                    </label>                    <input
                       type="text"
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all"
                       placeholder="Project Collaboration"
                     />
                   </div>
@@ -277,15 +269,14 @@ const Contact = () => {
                   <div>
                     <label htmlFor="message" className="block text-white font-medium mb-2">
                       Message
-                    </label>
-                    <textarea
+                    </label>                    <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
                       placeholder="Tell me about your project or how I can help..."
                     />
                   </div>

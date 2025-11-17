@@ -2,94 +2,229 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import EnhancedParticles, { FloatingOrbs, RotatingRings } from '@/components/ui/EnhancedParticles';
+import { Sparkles, Download, Mail } from 'lucide-react';
 
 export default function Hero() {
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-8">
-      {/* Gradient Background with Floating Particles */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-purple-950/80"></div>
+      {/* Enhanced Particles Background */}
+      <EnhancedParticles particleCount={60} interactive={true} />
       
-      {/* Floating Background Particles */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute top-60 right-32 w-48 h-48 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '2s', animationDuration: '6s'}}></div>
-        <div className="absolute bottom-40 left-1/3 w-24 h-24 bg-purple-600/8 rounded-full blur-xl animate-pulse" style={{animationDelay: '4s'}}></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-300/6 rounded-full blur-2xl animate-bounce" style={{animationDelay: '1s', animationDuration: '8s'}}></div>
-      </div>
-        {/* Floating Windows-Style Card */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <div className="floating-window bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden">
+      {/* Rotating Rings */}
+      <RotatingRings />{/* Floating Windows-Style Card */}
+      <motion.div 
+        className="relative z-10 w-full max-w-6xl mx-auto"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.div 
+          className="floating-window bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden hover-lift"
+          whileHover={{ y: -5 }}
+          transition={{ duration: 0.3 }}
+        >
           {/* Window Top Bar */}
-          <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-white/10">
+          <motion.div 
+            className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-white/10"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
             <div className="flex items-center space-x-3">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <motion.div 
+                className="w-3 h-3 bg-red-500 rounded-full cursor-pointer"
+                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(239, 68, 68, 0.8)" }}
+                whileTap={{ scale: 0.9 }}
+              ></motion.div>
+              <motion.div 
+                className="w-3 h-3 bg-yellow-500 rounded-full cursor-pointer"
+                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(234, 179, 8, 0.8)" }}
+                whileTap={{ scale: 0.9 }}
+              ></motion.div>
+              <motion.div 
+                className="w-3 h-3 bg-green-500 rounded-full cursor-pointer"
+                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(34, 197, 94, 0.8)" }}
+                whileTap={{ scale: 0.9 }}
+              ></motion.div>
             </div>
-            <div className="text-gray-400 text-sm font-medium">Dinithi Portfolio v2.0</div>
+            <motion.div 
+              className="text-gray-400 text-sm font-medium flex items-center gap-2"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Sparkles size={16} className="text-purple-400" />
+              Dinithi Portfolio v2.0
+            </motion.div>
             <div className="w-16"></div>
-          </div>
-          
+          </motion.div>          
           {/* Window Content */}
           <div className="flex flex-col lg:flex-row p-8 lg:p-12 gap-8 lg:gap-16">
             {/* Left Side - Portrait Image */}
-            <div className="flex-1 flex justify-center lg:justify-start">
-              <div className="image-container relative w-72 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden">
-                <Image
-                  src="/Profile.jpg"
-                  alt="Dinithi Profile"
-                  fill
-                  className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-              </div>
-            </div>
-            
-            {/* Right Side - Hero Content */}
-            <div className="flex-1 flex flex-col justify-center space-y-6">
-              {/* Badge */}
-              <div className="badge-animation">
-                <div className="inline-flex items-center px-4 py-2 bg-purple-500/20 border border-purple-400/30 rounded-full text-purple-300 text-sm font-medium tracking-wide backdrop-blur-sm">
-                  <span className="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></span>
-                  WordPress Developer
+            <motion.div 
+              className="flex-1 flex justify-center lg:justify-start"
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              <motion.div 
+                className="relative w-72 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {/* Removed Animated Border */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/Profile.jpg"
+                    alt="Dinithi Profile"
+                    fill
+                    className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                  {/* Hover Overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
-              </div>
+              </motion.div>
+            </motion.div>            
+            {/* Right Side - Hero Content */}
+            <motion.div 
+              className="flex-1 flex flex-col justify-center space-y-6"
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+              >
+                <motion.div 
+                  className="inline-flex items-center px-4 py-2 bg-purple-500/20 border border-purple-400/30 rounded-full text-purple-300 text-sm font-medium tracking-wide backdrop-blur-sm cursor-pointer"
+                  whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.5)" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span 
+                    className="w-2 h-2 bg-purple-400 rounded-full mr-2"
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      opacity: [1, 0.5, 1]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  ></motion.span>
+                  WordPress Developer
+                </motion.div>
+              </motion.div>
               
               {/* Title */}
-              <div className="text-animation">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.8 }}
+              >
                 <h1 className="text-4xl lg:text-6xl xl:text-7xl font-light text-white mb-4 leading-tight">
                   Hi, I am{' '}
-                  <span className="text-transparent bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text font-medium">
+                  <motion.span 
+                    className="text-transparent bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text font-medium inline-block"
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{
+                      backgroundSize: '200% 200%',
+                    }}
+                  >
                     Dinithi
-                  </span>
+                  </motion.span>
                 </h1>
-              </div>
+              </motion.div>
               
               {/* Subtitle */}
-              <div className="text-animation" style={{animationDelay: '0.2s'}}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+              >
                 <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
                   I build{' '}
-                  <span className="text-purple-400 font-medium">WordPress plugin</span>{' '}
+                  <motion.span 
+                    className="text-purple-400 font-medium"
+                    whileHover={{ 
+                      scale: 1.05,
+                      textShadow: "0 0 20px rgba(168, 85, 247, 0.8)"
+                    }}
+                  >
+                    WordPress plugin
+                  </motion.span>{' '}
                   experiences.
                 </p>
-              </div>
+              </motion.div>
               
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button className="group relative px-8 py-4 bg-transparent border-2 border-purple-400/50 rounded-xl text-white font-medium tracking-wide transition-all duration-300 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-400/25 overflow-hidden">
-                  <span className="relative z-10">Know Profile</span>
-                  <div className="absolute inset-0 bg-purple-400/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                </button>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 pt-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4, duration: 0.8 }}
+              >
+                <motion.button 
+                  className="group relative px-8 py-4 bg-transparent border-2 border-purple-400/50 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
+                  whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.8)" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span 
+                    className="relative z-10 flex items-center justify-center gap-2"
+                  >
+                    <Download size={20} />
+                    Download CV
+                  </motion.span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-purple-600/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  ></motion.div>
+                </motion.button>
                 
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl text-white font-medium tracking-wide transition-all duration-300 hover:from-purple-400 hover:to-purple-500 hover:shadow-lg hover:shadow-purple-500/40 overflow-hidden">
-                  <span className="relative z-10">Know More</span>
-                  <div className="absolute inset-0 bg-white/10 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                </button>
-              </div>
-            </div>
+                <motion.button 
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span 
+                    className="relative z-10 flex items-center justify-center gap-2"
+                  >
+                    <Mail size={20} />
+                    Contact Me
+                  </motion.span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-500"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
+                  ></motion.div>
+                </motion.button>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
