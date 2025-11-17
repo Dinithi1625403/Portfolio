@@ -45,17 +45,16 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
-  return (
-    <motion.nav
+  return (    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-secondary-900/95 backdrop-blur-md shadow-lg border-b border-secondary-800' 
+          ? 'bg-black/90 backdrop-blur-xl border border-white/10 rounded-b-2xl mx-4 shadow-lg shadow-purple-500/20' 
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <motion.div 
@@ -69,9 +68,9 @@ const Navigation = () => {
                 e.preventDefault();
                 scrollToSection('#home');
               }}
-              className="hover:text-primary-400 transition-colors"
+              className="hover:text-purple-400 transition-colors"
             >
-              JD
+              Dinithi
             </a>
           </motion.div>
 
@@ -87,7 +86,7 @@ const Navigation = () => {
                 }}
                 className={`relative text-sm font-medium transition-colors duration-200 ${
                   activeSection === item.href.slice(1)
-                    ? 'text-primary-400'
+                    ? 'text-purple-400'
                     : 'text-gray-300 hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -96,7 +95,7 @@ const Navigation = () => {
                 {item.name}
                 {activeSection === item.href.slice(1) && (
                   <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-400"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-400"
                     layoutId="activeSection"
                     initial={false}
                   />
@@ -125,7 +124,7 @@ const Navigation = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-secondary-800/95 backdrop-blur-md rounded-lg mt-2 mb-4 border border-secondary-700"
+              className="md:hidden bg-black/90 backdrop-blur-xl rounded-lg mt-2 mb-4 border border-white/10 shadow-lg shadow-purple-500/20"
             >
               <div className="py-4 space-y-2">
                 {navigationItems.map((item) => (
@@ -136,10 +135,10 @@ const Navigation = () => {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }}
-                    className={`block px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                    className={`block px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg mx-2 ${
                       activeSection === item.href.slice(1)
-                        ? 'text-primary-400 bg-primary-400/10'
-                        : 'text-gray-300 hover:text-white hover:bg-secondary-700/50'
+                        ? 'text-purple-400 bg-purple-400/10'
+                        : 'text-gray-300 hover:text-white hover:bg-white/10'
                     }`}
                     whileHover={{ x: 10 }}
                     whileTap={{ scale: 0.95 }}

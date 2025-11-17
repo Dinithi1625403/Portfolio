@@ -28,35 +28,13 @@ const Skills = () => {
   const filteredSkills = portfolioData.technicalSkills.filter(
     skill => skill.category === activeCategory
   );
-  return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-dark-300 via-dark-200 to-dark-100 relative overflow-hidden">
+  return (    
+    <section id="skills" className="py-20 bg-gradient-to-br from-black via-slate-900 to-purple-950/80 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.5, 1, 1.5],
-            opacity: [0.2, 0.1, 0.2],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 6,
-          }}
-        />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '3s', animationDuration: '8s'}}></div>
+        <div className="absolute top-1/2 left-20 w-32 h-32 bg-purple-600/8 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -76,7 +54,26 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        {/* Windows-style Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden mb-12"
+        >
+          {/* Window Top Bar */}
+          <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-white/10">
+            <div className="flex items-center space-x-3">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <div className="text-gray-400 text-sm font-medium">Skills_Portfolio.json</div>
+            <div className="w-16"></div>
+          </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 p-8 lg:p-12">
           {/* Technical Skills */}
           <div>
             <motion.h3
@@ -161,7 +158,8 @@ const Skills = () => {
                 </motion.div>
               ))}
             </motion.div>
-          </div>          {/* Soft Skills, Certifications & Achievements */}
+          </div>          
+          {/* Soft Skills, Certifications & Achievements */}
           <div className="space-y-8">
             {/* Soft Skills */}
             <div>
@@ -311,8 +309,9 @@ const Skills = () => {
             </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
+  </section>
   );
 };
 
