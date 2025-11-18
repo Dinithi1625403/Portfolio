@@ -23,6 +23,14 @@
   box-sizing: border-box;
 }
 
+/* Performance optimizations */
+*,
+*::before,
+*::after {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -33,6 +41,39 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Performance optimizations */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+/* GPU acceleration utilities */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -256,53 +297,46 @@ textarea:focus {
   animation: gradient-shift 20s ease infinite;
 }
 
-/* Windows glow effect - Purple version */
-@keyframes windows-glow-purple {
+/* Optimized Windows glow effect - Simplified */
+@keyframes windows-glow-optimized {
   0%, 100% {
-    box-shadow: 
-      0 0 20px rgba(139, 92, 246, 0.4),
-      0 0 40px rgba(139, 92, 246, 0.25),
-      inset 0 0 20px rgba(139, 92, 246, 0.1);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
   }
   50% {
-    box-shadow: 
-      0 0 30px rgba(168, 85, 247, 0.5),
-      0 0 60px rgba(168, 85, 247, 0.35),
-      inset 0 0 30px rgba(168, 85, 247, 0.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.6));
   }
 }
 
 .windows-glow-purple {
-  animation: windows-glow-purple 3s ease-in-out infinite;
+  animation: windows-glow-optimized 4s ease-in-out infinite;
 }
 
-/* Floating particles animation */
-@keyframes float-particle {
+/* Simplified floating animation */
+@keyframes float-simple {
   0%, 100% {
-    transform: translateY(0) translateX(0) scale(1);
+    transform: translateY(0);
     opacity: 0.6;
   }
-  25% {
-    transform: translateY(-25px) translateX(15px) scale(1.1);
-    opacity: 0.8;
-  }
   50% {
-    transform: translateY(-15px) translateX(-15px) scale(0.95);
-    opacity: 0.7;
-  }
-  75% {
-    transform: translateY(-35px) translateX(10px) scale(1.05);
-    opacity: 0.9;
+    transform: translateY(-20px);
+    opacity: 1;
   }
 }
 
-/* Shimmer effect for buttons and cards */
-@keyframes shimmer-sweep {
+/* Optimized shimmer effect */
+@keyframes shimmer-optimized {
   0% {
-    background-position: -200% center;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
   }
   100% {
-    background-position: 200% center;
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
 
@@ -324,7 +358,7 @@ textarea:focus {
     rgba(192, 132, 252, 0.3),
     transparent
   );
-  animation: shimmer-sweep 3s infinite;
+  animation: shimmer-optimized 3s infinite;
   pointer-events: none;
 }
 

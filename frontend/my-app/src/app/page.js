@@ -1,15 +1,31 @@
 'use client';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Navigation from '@/components/ui/Navigation';
 import Hero from '@/components/sections/Hero';
-import About from '@/components/sections/About';
-import Skills from '@/components/sections/Skills';
-import Projects from '@/components/sections/Projects';
-import Experience from '@/components/sections/Experience';
-import Contact from '@/components/sections/Contact';
-import Footer from '@/components/ui/Footer';
-import Windows11Background from '@/components/ui/Windows11Background';
+import OptimizedBackground from '@/components/ui/OptimizedBackground';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import LazySection from '@/components/ui/LazySection';
+
+// Lazy load sections that are not immediately visible
+const About = dynamic(() => import('@/components/sections/About'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
+});
+const Skills = dynamic(() => import('@/components/sections/Skills'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
+});
+const Projects = dynamic(() => import('@/components/sections/Projects'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
+});
+const Experience = dynamic(() => import('@/components/sections/Experience'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
+});
+const Contact = dynamic(() => import('@/components/sections/Contact'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
+});
+const Footer = dynamic(() => import('@/components/ui/Footer'), {
+  loading: () => <div className="h-20 bg-black/50" />
+});
 
 export default function Home() {
   // Scroll progress indicator
@@ -22,14 +38,16 @@ export default function Home() {
 
   return (
     <>
-      {/* Windows 11-style Wallpaper Background */}
-      <Windows11Background />
+      {/* Optimized Windows 11-style Background */}
+      <OptimizedBackground />
 
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 origin-left z-50"
         style={{ scaleX }}
-      />      <motion.div
+      />
+      
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -39,57 +57,41 @@ export default function Home() {
         <main className="relative z-10">
           <Hero />
           
-          {/* Section divider with animation */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-          />
+          {/* Lazy loaded sections with optimized dividers */}
+          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
           
-          <About />
+          <LazySection>
+            <About />
+          </LazySection>
           
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-          />
+          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
           
-          <Skills />
+          <LazySection>
+            <Skills />
+          </LazySection>
           
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-          />
+          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
           
-          <Projects />
+          <LazySection>
+            <Projects />
+          </LazySection>
           
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-          />
+          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
           
-          <Experience />
+          <LazySection>
+            <Experience />
+          </LazySection>
           
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-          />
+          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+          
+          <LazySection>
             <Contact />
+          </LazySection>
         </main>
-        <Footer />
+        
+        <LazySection>
+          <Footer />
+        </LazySection>
         
         {/* Scroll to Top Button */}
         <ScrollToTop />

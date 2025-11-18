@@ -2,18 +2,20 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import EnhancedParticles, { FloatingOrbs, RotatingRings } from '@/components/ui/EnhancedParticles';
+import { motion, useReducedMotion } from 'framer-motion';
+import { OptimizedParticles, SimpleFloatingOrbs } from '@/components/ui/OptimizedParticles';
 import { Sparkles, Download, Mail } from 'lucide-react';
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-8">
-      {/* Enhanced Particles Background */}
-      <EnhancedParticles particleCount={60} interactive={true} />
+      {/* Optimized Particles Background */}
+      <OptimizedParticles particleCount={shouldReduceMotion ? 10 : 30} />
       
-      {/* Rotating Rings */}
-      <RotatingRings />{/* Floating Windows-Style Card */}
+      {/* Simple Floating Orbs */}
+      <SimpleFloatingOrbs count={shouldReduceMotion ? 1 : 3} />{/* Floating Windows-Style Card */}
       <motion.div 
         className="relative z-10 w-full max-w-6xl mx-auto"
         initial={{ opacity: 0, scale: 0.9 }}
