@@ -4,28 +4,35 @@ import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { OptimizedParticles, SimpleFloatingOrbs } from '@/components/ui/OptimizedParticles';
+import GlitterParticles, { FloatingGlassPanel, TypewriterEffect } from '@/components/ui/GlitterParticles';
 import { Sparkles, Download, Mail } from 'lucide-react';
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
-
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-8">
-      {/* Optimized Particles Background */}
-      <OptimizedParticles particleCount={shouldReduceMotion ? 10 : 30} />
+      {/* Glitter Particles Background Layer */}
+      <GlitterParticles 
+        particleCount={shouldReduceMotion ? 20 : 45}
+        enableParallax={true}
+        enableShimmer={!shouldReduceMotion}
+        className="opacity-80"
+      />
+      
+      {/* Additional Background Particles */}
+      <OptimizedParticles particleCount={shouldReduceMotion ? 8 : 20} />
       
       {/* Simple Floating Orbs */}
-      <SimpleFloatingOrbs count={shouldReduceMotion ? 1 : 3} />{/* Floating Windows-Style Card */}
+      <SimpleFloatingOrbs count={shouldReduceMotion ? 1 : 3} />      {/* Floating Windows-Style Card */}
       <motion.div 
         className="relative z-10 w-full max-w-6xl mx-auto"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.div 
-          className="floating-window bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden hover-lift"
-          whileHover={{ y: -5 }}
-          transition={{ duration: 0.3 }}
+        <FloatingGlassPanel 
+          intensity="medium"
+          className="bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden"
         >
           {/* Window Top Bar */}
           <motion.div 
@@ -153,15 +160,20 @@ export default function Hero() {
                   </motion.span>
                 </h1>
               </motion.div>
-              
-              {/* Subtitle */}
+                {/* Subtitle */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
               >
                 <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
-                  I build{' '}
+                  <TypewriterEffect 
+                    text="I build "
+                    className=""
+                    speed={100}
+                    cursor={false}
+                    startDelay={2000}
+                  />
                   <motion.span 
                     className="text-purple-400 font-medium"
                     whileHover={{ 
@@ -169,9 +181,21 @@ export default function Hero() {
                       textShadow: "0 0 20px rgba(168, 85, 247, 0.8)"
                     }}
                   >
-                    WordPress plugin
-                  </motion.span>{' '}
-                  experiences.
+                    <TypewriterEffect 
+                      text="WordPress plugin"
+                      className="text-purple-400 font-medium"
+                      speed={80}
+                      cursor={false}
+                      startDelay={2800}
+                    />
+                  </motion.span>
+                  <TypewriterEffect 
+                    text=" experiences."
+                    className=""
+                    speed={120}
+                    cursor={true}
+                    startDelay={4200}
+                  />
                 </p>
               </motion.div>
               
@@ -221,11 +245,10 @@ export default function Hero() {
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.5 }}
                   ></motion.div>
-                </motion.button>
-              </motion.div>
+                </motion.button>              </motion.div>
             </motion.div>
           </div>
-        </motion.div>
+        </FloatingGlassPanel>
       </motion.div>
     </section>
   );
