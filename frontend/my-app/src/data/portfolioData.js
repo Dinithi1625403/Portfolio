@@ -1,20 +1,18 @@
-export const portfolioData = {
-  personal: {
+export const portfolioData = {  personal: {
     name: "Dinithi Dewmini",
     title: "Information Technology Student",
     subtitle: "Passionate about harnessing technology to solve real-world problems",
     bio: "Hello! I'm Dinithi Dewmini, currently pursuing my undergraduate degree in Information Technology at the University of Moratuwa. Passionate about harnessing technology to solve real-world problems, I am constantly exploring new developments in the IT landscape and how they can be applied innovatively. I'm always eager to connect with like-minded professionals, mentors, and industry experts to exchange ideas, collaborate on projects, and explore potential career opportunities.",
     location: "Gampaha District, Western Province, Sri Lanka",
     email: "dinithi1625403@gmail.com",
-    phone: "", // Not provided
+    phone: "0701167176",
     profileImage: "/api/placeholder/300/300", // You can replace this with your actual photo
   },
-  
-  socialLinks: [
+    socialLinks: [
     {
       name: "GitHub",
       icon: "Github",
-      url: "https://github.com/dinithidewmini", // Update with actual GitHub URL
+      url: "https://github.com/Dinithi1625403",
       color: "hover:text-gray-400"
     },
     {

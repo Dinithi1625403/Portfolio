@@ -1,18 +1,11 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Heart, ArrowUp, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Heart, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import { portfolioData, navigationItems } from '@/data/portfolioData';
 import WindowContainer from '@/components/ui/WindowContainer';
 import WindowHeaderBar from '@/components/ui/WindowHeaderBar';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -171,21 +164,10 @@ const Footer = () => {
               </motion.div>
               <span>and Next.js</span>
             </div>
-            
-            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4">
               <span className="text-gray-400 text-sm">
                 Built with Next.js, Tailwind CSS & Framer Motion
               </span>
-              
-              {/* Back to Top Button */}
-              <motion.button
-                onClick={scrollToTop}
-                className="p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors group"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ArrowUp size={16} className="group-hover:animate-bounce" />
-              </motion.button>
             </div>
           </motion.div>
 
