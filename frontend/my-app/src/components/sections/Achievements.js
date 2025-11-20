@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Trophy, Star } from 'lucide-react';
 import { portfolioData } from '@/data/portfolioData';
+import WindowContainer from '@/components/ui/WindowContainer';
+import WindowHeaderBar from '@/components/ui/WindowHeaderBar';
 
 const Achievements = () => {
   return (
@@ -11,16 +13,14 @@ const Achievements = () => {
         <div className="absolute top-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '3s', animationDuration: '8s'}}></div>
         <div className="absolute top-1/2 right-20 w-32 h-32 bg-purple-600/8 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+      </div>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header - Outside Window */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Awards & <span className="text-purple-400">Achievements</span>
@@ -28,16 +28,20 @@ const Achievements = () => {
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Recognition for innovation and excellence in competitions, hackathons, and academic pursuits that demonstrate my passion for technology and problem-solving.
           </p>
-        </motion.div>
-
-        {/* Achievements Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        </motion.div>        {/* Floating Window Container */}
+        <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden floating-window">
+          {/* Window Header - Outside Padding */}
+          <WindowHeaderBar title="Awards.exe" />
+          
+          <div className="p-8 md:p-10">
+            {/* Achievements Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
           {portfolioData.achievements.map((achievement, index) => (
             <motion.div
               key={achievement.title}
@@ -68,8 +72,7 @@ const Achievements = () => {
                 <h3 className="text-white font-bold text-lg mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
                   {achievement.title}
                 </h3>
-                
-                <p className="text-purple-300 text-sm mb-3 line-clamp-2">
+                  <p className="text-purple-300 text-sm mb-3 line-clamp-2">
                   {achievement.description}
                 </p>
                 
@@ -81,15 +84,19 @@ const Achievements = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
 
-        {/* Highlights Section */}
+      {/* Highlights Section - Outside Window */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-20 p-8 bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl border border-purple-500/20"
+          className="p-8 bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl border border-purple-500/20"
         >
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>

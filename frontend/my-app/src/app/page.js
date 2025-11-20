@@ -3,7 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Navigation from '@/components/ui/Navigation';
 import Hero from '@/components/sections/Hero';
-import OptimizedBackground from '@/components/ui/OptimizedBackground';
+import FullScreenIridescentBackground from '@/components/ui/FullScreenIridescentBackground';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import LazySection from '@/components/ui/LazySection';
 
@@ -41,11 +41,10 @@ export default function Home() {
     damping: 30,
     restDelta: 0.001
   });
-
   return (
     <>
-      {/* Optimized Windows 11-style Background */}
-      <OptimizedBackground />
+      {/* Full-Screen Iridescent Animated Gradient Background */}
+      <FullScreenIridescentBackground />
 
       {/* Scroll Progress Bar */}
       <motion.div
