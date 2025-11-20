@@ -8,11 +8,9 @@ const Skills = () => {
   const [activeTab, setActiveTab] = useState('technical');
   const [activeCategory, setActiveCategory] = useState('Design');
   const [isInView, setIsInView] = useState(false);
-
   const tabs = [
     { id: 'technical', label: 'Technical Skills', icon: Code },
     { id: 'soft', label: 'Soft Skills', icon: Brain },
-    { id: 'achievements', label: 'Achievements', icon: Trophy },
   ];
 
   const categories = {
@@ -298,8 +296,7 @@ const Skills = () => {
                   </div>
                 </motion.div>
 
-                {/* Learning Journey */}
-                <motion.div
+                {/* Learning Journey */}                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
@@ -316,83 +313,6 @@ const Skills = () => {
                     and emerging AI/ML technologies to solve real-world problems innovatively.
                   </p>
                 </motion.div>
-              </motion.div>
-            )}
-
-            {/* Achievements Tab */}
-            {activeTab === 'achievements' && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-8"
-              >
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">Certifications & Awards</h3>
-                  <p className="text-gray-400">Recognition of excellence and dedication</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  {/* Certifications */}
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                      <Award className="text-purple-400" size={24} />
-                      Certifications
-                    </h4>
-                    <div className="space-y-3">
-                      {portfolioData.certifications.map((cert, index) => (
-                        <motion.div
-                          key={cert}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.6, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ x: 5 }}
-                          className="bg-gradient-to-r from-purple-900/40 via-purple-800/30 to-purple-900/40 rounded-lg p-4 border border-purple-500/20 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/20 transition-all group flex items-start gap-3"
-                        >
-                          <div className="mt-1 p-2 bg-purple-500/20 rounded-lg border border-purple-500/30">
-                            <BookOpen className="text-purple-400 group-hover:text-purple-300 transition-colors" size={18} />
-                          </div>
-                          <div className="flex-1">
-                            <span className="text-white font-medium block">{cert}</span>
-                            <span className="text-xs text-purple-300 mt-1 block">Verified Credential</span>
-                          </div>
-                          <Star className="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Achievements */}
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                      <Trophy className="text-purple-400" size={24} />
-                      Achievements & Awards
-                    </h4>
-                    <div className="space-y-3">
-                      {portfolioData.achievements.map((achievement, index) => (
-                        <motion.div
-                          key={achievement}
-                          initial={{ opacity: 0, x: 20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.6, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ x: -5 }}
-                          className="bg-gradient-to-r from-purple-900/40 via-purple-800/30 to-purple-900/40 rounded-lg p-4 border border-purple-500/30 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/20 transition-all group flex items-start gap-3"
-                        >
-                          <div className="mt-1 p-2 bg-purple-500/20 rounded-lg border border-purple-500/30">
-                            <Star className="text-purple-400 group-hover:text-purple-300 transition-colors" size={18} />
-                          </div>
-                          <div className="flex-1">
-                            <span className="text-white font-medium block">{achievement}</span>
-                            <span className="text-xs text-purple-300 mt-1 block">Achievement Unlocked</span>
-                          </div>
-                          <Trophy className="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             )}
           </div>

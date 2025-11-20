@@ -57,23 +57,81 @@ export const portfolioData = {
     "Innovation",
     "Time Management",
     "Mentoring"
-  ],
-
-  certifications: [
-    "JavaScript Intermediate",
-    "Project Management Foundation", 
-    "Introduction to Cloud Computing",
-    "Introduction to C",
-    "Google Analytics for Beginners"
+  ],  certifications: [
+    {
+      title: "CodeQuest: Vault Edition 2025 – Initial Round",
+      image: "/CTF.jpeg",
+      issuer: "IEEE Student Branch of UCSC",
+      date: "Jul 2025",
+      credentialID: "CodeQuest CFT Competition",
+      skills: "Competitive Programming"
+    },
+    {
+      title: "Introduction to Digital Transformation with Google Cloud",
+      image: "/googleCloud.jpeg",
+      issuer: "Google",
+      date: "Jun 2024",
+      credentialID: "6801752",
+      skills: "Google Cloud"
+    },
+    {
+      title: "Project Management Foundation",
+      image: "/projectMan.jpeg",
+      issuer: "National Association of State Boards of Accountancy (NASBA)",
+      date: "Jun 2024",
+      credentialID: "8ac122d87a2c30ce231c95197b5b6b6d",
+      skills: "Project Management"
+    },
+    {
+      title: "Introduction to C++",
+      image: "/introC++.jpeg",
+      issuer: "Sololearn",
+      date: "Jun 2024",
+      credentialID: "AZZJDUTG",
+      skills: "C++"
+    },
+    {
+      title: "Introduction to SQL",
+      image: "/intro to sql.jpeg",
+      issuer: "Sololearn",
+      date: "Jun 2024",
+      credentialID: "LJYJU6ZD",
+      skills: "SQL"
+    }
   ],
 
   achievements: [
-    "Winner of Nadhaya Imagine AI Competition",
-    "Diploma in English Language and Literature",
-    "Semifinalist of hack X 9.0 2024", 
-    "Finalist – InspiHER(tech) v3.0",
-    "Top 12 Finalist – Devthon 2.0"
-  ],  projects: [    {
+    {
+      title: "Team NovaX Finalist – HackElite 2.0",
+      image: "/hacklite.jpeg",
+      date: "2025",
+      description: "Developed LevelUp LMS - an innovative Learning Management System. Built with React.js, Node.js, Express, MongoDB, Socket.io, Tailwind CSS & Framer Motion"
+    },
+    {
+      title: "Top 12 Finalist – Devthon 2.0",
+      image: "/devthon.jpeg",
+      date: "Apr 2025",
+      description: "Team Magmatroxes developed SkillForge - a platform enabling skill exchange through barter system. Recognized for collaboration & peer learning innovation"
+    },
+    {
+      title: "Finalist – InspiHER(tech) v3.0",
+      image: "/inspiher.jpeg",
+      date: "Jan 2025",
+      description: "Team Tech Maverick completed 3-phase competition: AutoCAD Design, Digital Trends Analysis, and Hackathon. Showcased technical expertise & problem-solving"
+    },
+    {
+      title: "Semifinalist – HackX 9.0 2024",
+      image: "/hackX.jpeg",
+      date: "2024",
+      description: "Team EvoGen represented University of Moratuwa. Honored for innovation, teamwork & problem-solving in this inter-university hackathon"
+    },
+    {
+      title: "SpiritX: Stage 1 – Xcelerate 2025",
+      image: "/spritX.jpeg",
+      date: "May 2025",
+      description: "Team ByteShift participated in inter-university development competition organized by MoraSpirit 360. Focus on Web Development innovation"
+    }
+  ],projects: [    {
       id: 1,
       title: "PetConnect",
       description: "A web platform designed to connect pet lovers, facilitate adoptions, and create a supportive community. Users can browse pets available for adoption, view latest posts about lost or injured animals, and interact through a community wall.",
