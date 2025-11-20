@@ -12,12 +12,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "John Doe - Full Stack Developer Portfolio",
-  description: "Professional portfolio of John Doe, a passionate full stack developer specializing in React, Node.js, and modern web technologies. Discover my projects, skills, and experience in creating innovative digital solutions.",
+  title: "Dinithi Dewmini - Full Stack Developer Portfolio",
+  description: "Professional portfolio of Dinithi Dewmini, a passionate full stack developer specializing in React, Node.js, and modern web technologies. Discover my projects, skills, and experience in creating innovative digital solutions.",
   keywords: "portfolio, full stack developer, React, Next.js, Node.js, web development, JavaScript, TypeScript, frontend, backend, UI/UX, responsive design",
-  author: "John Doe",
-  creator: "John Doe",
-  publisher: "John Doe",
+  author: "Dinithi Dewmini",
+  creator: "Dinithi Dewmini",
+  publisher: "Dinithi Dewmini",
   formatDetection: {
     email: false,
     address: false,
@@ -28,16 +28,16 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "John Doe - Full Stack Developer Portfolio",
+    title: "Dinithi Dewmini - Full Stack Developer Portfolio",
     description: "Professional portfolio showcasing full stack development projects and expertise in modern web technologies.",
     url: 'https://johndoe-portfolio.vercel.app',
-    siteName: 'John Doe Portfolio',
+    siteName: 'Dinithi Dewmini Portfolio',
     images: [
       {
         url: '/api/placeholder/1200/630',
         width: 1200,
         height: 630,
-        alt: 'John Doe - Full Stack Developer',
+        alt: 'Dinithi Dewmini - Full Stack Developer',
       },
     ],
     locale: 'en_US',
@@ -45,7 +45,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "John Doe - Full Stack Developer Portfolio",
+    title: "Dinithi Dewmini - Full Stack Developer Portfolio",
     description: "Professional portfolio showcasing full stack development projects and expertise in modern web technologies.",
     creator: '@johndoe',
     images: ['/api/placeholder/1200/630'],

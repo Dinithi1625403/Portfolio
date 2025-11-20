@@ -87,7 +87,7 @@ Text Output:
 Example:
   <HeroText
     badge="Full Stack Developer"
-    name="John Doe"
+    name="Dinithi Dewmini"
     subtitle="amazing web apps"
     description="with React & Node.js"
   />

@@ -26,7 +26,7 @@ export function SimpleHero() {
           <div className="p-12 text-center">
             <HeroText
               badge="Full Stack Developer"
-              name="John Doe"
+              name="Dinithi Dewmini"
               subtitle="beautiful web applications"
               description="with modern technologies."
             />
