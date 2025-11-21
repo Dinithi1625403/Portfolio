@@ -17,9 +17,6 @@ const Skills = dynamic(() => import('@/components/sections/Skills'), {
 const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
 });
-const Experience = dynamic(() => import('@/components/sections/Experience'), {
-  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
-});
 const Certifications = dynamic(() => import('@/components/sections/Certifications'), {
   loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>
 });
@@ -87,15 +84,8 @@ export default function Home() {
           </LazySection>
           
           <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
-          
-          <LazySection>
+            <LazySection>
             <Projects />
-          </LazySection>
-          
-          <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
-          
-          <LazySection>
-            <Experience />
           </LazySection>
           
           <LazySection className="min-h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
