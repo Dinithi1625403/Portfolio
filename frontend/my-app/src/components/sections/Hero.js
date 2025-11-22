@@ -9,21 +9,22 @@ import { Sparkles, Download, Mail } from 'lucide-react';
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-8">
-      {/* Glitter Particles Background Layer */}
+      {/* Reduced Glitter Particles for Better Performance */}
       <GlitterParticles 
-        particleCount={shouldReduceMotion ? 20 : 45}
-        enableParallax={true}
+        particleCount={shouldReduceMotion ? 10 : 25}
+        enableParallax={!shouldReduceMotion}
         enableShimmer={!shouldReduceMotion}
-        className="opacity-80"
+        className="opacity-70"
       />
       
-      {/* Additional Background Particles */}
-      <OptimizedParticles particleCount={shouldReduceMotion ? 8 : 20} />
+      {/* Reduced Background Particles */}
+      <OptimizedParticles particleCount={shouldReduceMotion ? 5 : 12} />
       
-      {/* Simple Floating Orbs */}
-      <SimpleFloatingOrbs count={shouldReduceMotion ? 1 : 3} />      {/* Floating Windows-Style Card */}
+      {/* Reduced Floating Orbs */}
+      <SimpleFloatingOrbs count={shouldReduceMotion ? 0 : 2} />{/* Floating Windows-Style Card */}
       <motion.div 
         className="relative z-10 w-full max-w-6xl mx-auto"
         initial={{ opacity: 0, scale: 0.9 }}

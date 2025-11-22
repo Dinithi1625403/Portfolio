@@ -199,10 +199,8 @@ const FullScreenIridescentBackground = memo(() => {
           style={{
             background: 'radial-gradient(ellipse at top, #1a1f4e 0%, #0a0e27 40%, #050512 100%)',
           }}
-        />
-
-        {/* Animated Floating Particles Layer 1 */}
-        {[...Array(20)].map((_, i) => (
+        />        {/* Animated Floating Particles Layer 1 - Reduced from 20 to 8 */}
+        {[...Array(8)].map((_, i) => (
           <div
             key={`particle-1-${i}`}
             className="absolute rounded-full"
@@ -216,12 +214,13 @@ const FullScreenIridescentBackground = memo(() => {
               }, transparent)`,
               animation: `particle-float ${15 + Math.random() * 10}s ease-in-out infinite ${Math.random() * 5}s`,
               filter: 'blur(1px)',
+              willChange: 'transform, opacity',
             }}
           />
         ))}
 
-        {/* Animated Floating Particles Layer 2 - Larger */}
-        {[...Array(15)].map((_, i) => (
+        {/* Animated Floating Particles Layer 2 - Reduced from 15 to 6 */}
+        {[...Array(6)].map((_, i) => (
           <div
             key={`particle-2-${i}`}
             className="absolute rounded-full"
@@ -235,12 +234,13 @@ const FullScreenIridescentBackground = memo(() => {
               }, transparent)`,
               animation: `particle-float-2 ${20 + Math.random() * 15}s ease-in-out infinite ${Math.random() * 7}s`,
               filter: 'blur(2px)',
+              willChange: 'transform, opacity',
             }}
           />
         ))}
 
-        {/* Shooting Stars */}
-        {[...Array(5)].map((_, i) => (
+        {/* Shooting Stars - Reduced from 5 to 2 */}
+        {[...Array(2)].map((_, i) => (
           <div
             key={`shooting-star-${i}`}
             className="absolute"
@@ -252,12 +252,13 @@ const FullScreenIridescentBackground = memo(() => {
               background: 'linear-gradient(90deg, white, transparent)',
               boxShadow: '0 0 6px 2px rgba(255, 255, 255, 0.8)',
               animation: `shooting-star ${3 + Math.random() * 2}s linear infinite ${Math.random() * 10}s`,
+              willChange: 'transform, opacity',
             }}
           />
         ))}
 
-        {/* Glowing Orbs with Pulse Animation */}
-        {[...Array(8)].map((_, i) => (
+        {/* Glowing Orbs - Reduced from 8 to 4 */}
+        {[...Array(4)].map((_, i) => (
           <div
             key={`glow-orb-${i}`}
             className="absolute rounded-full"
@@ -271,6 +272,7 @@ const FullScreenIridescentBackground = memo(() => {
               }`,
               animation: `glow-pulse ${2 + Math.random() * 3}s ease-in-out infinite ${Math.random() * 2}s`,
               filter: 'blur(1.5px)',
+              willChange: 'box-shadow, opacity',
             }}
           />
         ))}{/* Star Field Layer 1 - Distant Stars */}
@@ -435,15 +437,13 @@ const FullScreenIridescentBackground = memo(() => {
               mixBlendMode: 'screen',
             }}
           />
-        </div>
-
-        {/* Aurora Accent Streaks */}
-        {[...Array(6)].map((_, i) => (
+        </div>        {/* Aurora Accent Streaks - Reduced from 6 to 3 */}
+        {[...Array(3)].map((_, i) => (
           <div
             key={`aurora-streak-${i}`}
             className="absolute"
             style={{
-              top: `${10 + i * 15}%`,
+              top: `${10 + i * 30}%`,
               left: '0',
               right: '0',
               height: '8%',
@@ -451,7 +451,7 @@ const FullScreenIridescentBackground = memo(() => {
                 linear-gradient(
                   90deg,
                   transparent 0%,
-                  ${['rgba(168, 85, 247, 0.4)', 'rgba(236, 72, 153, 0.4)', 'rgba(59, 130, 246, 0.4)', 'rgba(20, 184, 166, 0.4)'][i % 4]} 50%,
+                  ${['rgba(168, 85, 247, 0.4)', 'rgba(236, 72, 153, 0.4)', 'rgba(59, 130, 246, 0.4)'][i % 3]} 50%,
                   transparent 100%
                 )
               `,
@@ -459,6 +459,7 @@ const FullScreenIridescentBackground = memo(() => {
               animation: `aurora-wave ${25 + i * 3}s linear infinite ${i * 2}s`,
               mixBlendMode: 'screen',
               opacity: 0.6,
+              willChange: 'transform',
             }}
           />
         ))}{/* Cosmic Glow - Center Depth */}
