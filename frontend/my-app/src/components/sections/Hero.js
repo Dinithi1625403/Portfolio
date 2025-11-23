@@ -129,9 +129,8 @@ export default function Hero() {
                       duration: 2, 
                       repeat: Infinity,
                       ease: "easeInOut"
-                    }}
-                  ></motion.span>
-                  WordPress Developer
+                    }}                  ></motion.span>
+                  Frontend Developer
                 </motion.div>
               </motion.div>
               

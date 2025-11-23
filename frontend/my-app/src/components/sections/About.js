@@ -5,10 +5,9 @@ import { portfolioData } from '@/data/portfolioData';
 
 const About = () => {
   const stats = [
-    { icon: Code, label: 'Projects Completed', value: '50+' },
-    { icon: Calendar, label: 'Years Experience', value: '5+' },
-    { icon: Award, label: 'Happy Clients', value: '30+' },
-    { icon: Coffee, label: 'Cups of Coffee', value: '∞' },  ];
+    { icon: Code, label: 'Projects Completed', value: '10+' },
+    { icon: Calendar, label: 'Years Experience', value: '2+' },
+      ];
   return (    <section id="about" className="py-20 relative overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

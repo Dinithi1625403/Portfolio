@@ -108,7 +108,7 @@ const Achievements = () => {
               <p className="text-gray-300">Innovation Focus</p>
             </div>
             <div>
-              <h4 className="text-3xl font-bold text-purple-400 mb-2">50+</h4>
+              <h4 className="text-3xl font-bold text-purple-400 mb-2">5+</h4>
               <p className="text-gray-300">Team Members Collaborated</p>
             </div>
           </div>

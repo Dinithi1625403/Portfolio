@@ -3,12 +3,12 @@
 import React from 'react';
 
 export default function HeroText({ 
-  badge = 'WordPress Developer',
+  badge = 'Frontend Developer',
   name = 'Dinithi',
-  subtitle = 'WordPress plugin',
+  subtitle = 'interactive web experiences',
   description = 'experiences.',
   className = '' 
-}) {
+}){
   return (
     <div className={`flex flex-col justify-center space-y-6 ${className}`}>
       {/* Badge */}
