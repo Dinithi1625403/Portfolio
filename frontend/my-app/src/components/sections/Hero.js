@@ -5,7 +5,11 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { OptimizedParticles, SimpleFloatingOrbs } from '@/components/ui/OptimizedParticles';
 import GlitterParticles, { FloatingGlassPanel, TypewriterEffect } from '@/components/ui/GlitterParticles';
-import { Sparkles, Download, Mail } from 'lucide-react';
+import MagneticButton from '@/components/ui/MagneticButton';
+import TiltCard from '@/components/ui/TiltCard';
+import RevealAnimation from '@/components/ui/RevealAnimation';
+import ParallaxSection from '@/components/ui/ParallaxSection';
+import { Sparkles, Download, Mail, Github, Linkedin, Twitter } from 'lucide-react';
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -24,16 +28,17 @@ export default function Hero() {
       <OptimizedParticles particleCount={shouldReduceMotion ? 5 : 12} />
       
       {/* Reduced Floating Orbs */}
-      <SimpleFloatingOrbs count={shouldReduceMotion ? 0 : 2} />{/* Floating Windows-Style Card */}
+      <SimpleFloatingOrbs count={shouldReduceMotion ? 0 : 2} />      {/* Floating Windows-Style Card */}
       <motion.div 
         className="relative z-10 w-full max-w-6xl mx-auto"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
+        <TiltCard intensity={5} className="perspective-1000">
         <FloatingGlassPanel 
           intensity="medium"
-          className="bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden"
+          className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden"
         >
           {/* Window Top Bar */}
           <motion.div 
@@ -198,57 +203,70 @@ export default function Hero() {
                   />
                 </p>
               </motion.div>
-              
-              {/* Buttons */}
+                {/* Buttons */}
               <motion.div 
                 className="flex flex-col sm:flex-row gap-4 pt-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
               >
-                <motion.button 
-                  className="group relative px-8 py-4 bg-transparent border-2 border-purple-400/50 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
-                  whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.8)" }}
-                  whileTap={{ scale: 0.95 }}
+                <MagneticButton 
+                  className="group relative px-8 py-4 bg-transparent border-2 border-purple-400/50 rounded-xl text-white font-medium tracking-wide overflow-hidden transition-all hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30"
+                  intensity={0.3}
                 >
-                  <motion.span 
-                    className="relative z-10 flex items-center justify-center gap-2"
-                  >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
                     <Download size={20} />
                     Download CV
-                  </motion.span>
+                  </span>
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-purple-600/20"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}
                   ></motion.div>
-                </motion.button>
+                </MagneticButton>
                 
-                <motion.button 
-                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
+                <MagneticButton 
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl text-white font-medium tracking-wide overflow-hidden shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/50 transition-all"
+                  intensity={0.3}
                 >
-                  <motion.span 
-                    className="relative z-10 flex items-center justify-center gap-2"
-                  >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
                     <Mail size={20} />
                     Contact Me
-                  </motion.span>
+                  </span>
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-500"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.5 }}
                   ></motion.div>
-                </motion.button>              </motion.div>
-            </motion.div>
-          </div>
+                </MagneticButton>
+              </motion.div>
+
+              {/* Social Links */}
+              <motion.div 
+                className="flex gap-4 pt-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.6, duration: 0.8 }}
+              >
+                {[
+                  { icon: Github, href: '#', label: 'GitHub' },
+                  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+                  { icon: Twitter, href: '#', label: 'Twitter' }
+                ].map((social, index) => (
+                  <MagneticButton
+                    key={index}
+                    className="w-12 h-12 rounded-full border-2 border-purple-400/30 flex items-center justify-center text-purple-400 hover:bg-purple-500/10 hover:border-purple-400 transition-all"
+                    intensity={0.4}
+                  >
+                    <social.icon size={20} />
+                  </MagneticButton>
+                ))}
+              </motion.div>
+            </motion.div>          </div>
         </FloatingGlassPanel>
+        </TiltCard>
       </motion.div>
     </section>
   );

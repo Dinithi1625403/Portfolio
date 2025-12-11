@@ -69,8 +69,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">      <body
+  return (<>
+    <html lang="en"><body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LoaderWrapper duration={10000}>
@@ -78,5 +78,6 @@ export default function RootLayout({ children }) {
         </LoaderWrapper>
       </body>
     </html>
+    </>
   );
 }

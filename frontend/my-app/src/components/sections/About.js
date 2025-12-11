@@ -2,6 +2,10 @@
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Calendar, Award, Code, Coffee, GraduationCap, BookOpen } from 'lucide-react';
 import { portfolioData } from '@/data/portfolioData';
+import RevealAnimation, { StaggerContainer } from '@/components/ui/RevealAnimation';
+import TiltCard from '@/components/ui/TiltCard';
+import GlowingBorder from '@/components/ui/GlowingBorder';
+import ParallaxSection from '@/components/ui/ParallaxSection';
 
 const About = () => {
   const stats = [
@@ -62,29 +66,22 @@ const About = () => {
           animate={{ rotate: -360 }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      </div>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <RevealAnimation variant="fadeDown" className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            About <span className="text-purple-400">Me</span>
+            About <span className="text-purple-400 neon-glow">Me</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Get to know more about my journey, passion, and what drives me in the world of technology.
           </p>
-        </motion.div>        {/* Windows-style Card Container */}
+        </RevealAnimation>
+
+        {/* Windows-style Card Container */}
+        <RevealAnimation variant="scale">
+        <TiltCard intensity={3} className="perspective-1000">
+        <GlowingBorder glowColor="purple">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
           className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden floating-window"
         >
           {/* Window Top Bar */}
@@ -304,9 +301,11 @@ const About = () => {
                   </motion.span>
                 </motion.button>
               </motion.div>
-            </div>
-          </div>
+            </div>          </div>
         </motion.div>
+        </GlowingBorder>
+        </TiltCard>
+        </RevealAnimation>
       </div>
       
     </section>

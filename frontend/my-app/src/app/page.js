@@ -5,6 +5,12 @@ import Navigation from '@/components/ui/Navigation';
 import Hero from '@/components/sections/Hero';
 import LazySection from '@/components/ui/LazySection';
 
+// Enhanced UI Components
+const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'), { ssr: false });
+const FloatingElements = dynamic(() => import('@/components/ui/FloatingElements'), { ssr: false });
+const ScrollProgress = dynamic(() => import('@/components/ui/ScrollProgress'), { ssr: false });
+const PerformanceIndicator = dynamic(() => import('@/components/ui/PerformanceIndicator'), { ssr: false });
+
 // Lazy load background with higher priority
 const FullScreenIridescentBackground = dynamic(
   () => import('@/components/ui/FullScreenIridescentBackground'),
@@ -48,27 +54,25 @@ const Footer = dynamic(() => import('@/components/ui/Footer'), {
 });
 
 export default function Home() {
-  // Scroll progress indicator with optimized settings
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 50,
-    damping: 20,
-    restDelta: 0.001
-  });
   return (
     <>
+      {/* Enhanced Custom Cursor */}
+      <CustomCursor />
+
       {/* Full-Screen Iridescent Animated Gradient Background */}
       <FullScreenIridescentBackground />
 
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 origin-left z-50"
-        style={{ scaleX }}
-      />
-        <motion.div
+      {/* Floating Ambient Elements */}
+      <FloatingElements count={6} />
+
+      {/* Enhanced Scroll Progress */}
+      <ScrollProgress />
+
+      {/* Performance Indicator */}
+      <PerformanceIndicator />      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
         className="min-h-screen text-white relative"
       >
         <Navigation />
