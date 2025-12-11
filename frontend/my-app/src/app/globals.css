@@ -45,15 +45,8 @@ body {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: scroll-position;
-  /* Hide default cursor for custom cursor */
-  cursor: none;
-}
-
-/* Show default cursor on mobile */
-@media (max-width: 768px) {
-  body {
-    cursor: auto;
-  }
+  /* Remove custom cursor, use default */
+  cursor: auto;
 }
 
 /* GPU acceleration utilities */

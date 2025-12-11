@@ -6,7 +6,6 @@ import Hero from '@/components/sections/Hero';
 import LazySection from '@/components/ui/LazySection';
 
 // Enhanced UI Components
-const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'), { ssr: false });
 const FloatingElements = dynamic(() => import('@/components/ui/FloatingElements'), { ssr: false });
 const ScrollProgress = dynamic(() => import('@/components/ui/ScrollProgress'), { ssr: false });
 const PerformanceIndicator = dynamic(() => import('@/components/ui/PerformanceIndicator'), { ssr: false });
@@ -56,8 +55,7 @@ const Footer = dynamic(() => import('@/components/ui/Footer'), {
 export default function Home() {
   return (
     <>
-      {/* Enhanced Custom Cursor */}
-      <CustomCursor />
+      
 
       {/* Full-Screen Iridescent Animated Gradient Background */}
       <FullScreenIridescentBackground />
