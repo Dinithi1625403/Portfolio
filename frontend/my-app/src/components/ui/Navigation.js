@@ -90,7 +90,7 @@ const Navigation = () => {
               <div className="flex flex-col">
                 <div className="flex items-baseline gap-0.5">
                   <span className="text-xl font-bold text-purple-600">D</span>
-                  <span className="text-xl font-bold text-white">NITHI</span>
+                  <span className="text-xl font-bold text-white">INITHI</span>
                 </div>
                 <motion.div
                   className="h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
