@@ -32,7 +32,6 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -43,56 +42,69 @@ const Navigation = () => {
       });
     }
     setIsOpen(false);
-  };  return (    <motion.nav
+  };
+
+  return (
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-gradient-to-r from-gray-900/98 via-black/98 to-gray-900/98 backdrop-blur-2xl border-b-2 border-purple-500/30 shadow-2xl shadow-purple-500/20' 
-          : 'bg-transparent'
-      }`}
-      style={{
-        boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.1)' : 'none'
-      }}
+      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      {/* Windows-style top accent line */}
-      {scrolled && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600"></div>
-      )}
-      
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        {/* Windows-style taskbar */}
-        <div className="flex justify-between items-center py-3">
-          {/* Logo - Windows Start Button Style */}
-          <motion.div 
-            className={`relative ${scrolled ? 'px-4 py-2 bg-gradient-to-r from-purple-600/30 to-purple-500/30 rounded-lg border-2 border-purple-500/40 backdrop-blur-sm shadow-lg shadow-purple-500/30' : ''}`}
-            whileHover={{ scale: 1.05, boxShadow: scrolled ? '0 0 20px rgba(168, 85, 247, 0.5)' : 'none' }}
-            whileTap={{ scale: 0.95 }}
+      {/* Animated gradient background */}
+      <motion.div
+        className={`absolute inset-0 transition-all duration-500 ${
+          scrolled
+            ? 'bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-slate-950/80 backdrop-blur-xl'
+            : 'bg-transparent backdrop-blur-sm'
+        }`}
+        initial={false}
+      />
+
+      {/* Creative top border effect */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600/0 via-purple-500/80 to-purple-600/0"
+        animate={{
+          opacity: scrolled ? 1 : 0.3,
+          boxShadow: scrolled
+            ? '0 0 20px rgba(168, 85, 247, 0.6), inset 0 0 20px rgba(168, 85, 247, 0.2)'
+            : '0 0 10px rgba(168, 85, 247, 0.2)'
+        }}
+        transition={{ duration: 0.3 }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+        <div className="flex justify-between items-center py-4">          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection('#home');
               }}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-2 group"
             >
-              <div className="w-9 h-9 bg-gradient-to-br from-purple-600 to-purple-500 rounded-md flex items-center justify-center shadow-xl shadow-purple-500/50 group-hover:shadow-purple-500/70 transition-all border border-purple-400/50 relative overflow-hidden">
-                {/* Windows logo shimmer effect */}
+              <div className="flex flex-col">
+                <div className="flex items-baseline gap-0.5">
+                  <span className="text-xl font-bold text-purple-600">D</span>
+                  <span className="text-xl font-bold text-white">NITHI</span>
+                </div>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                  animate={{ x: ['-100%', '100%'] }}
-                  transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                  className="h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
                 />
-                <span className="text-white font-bold text-lg relative z-10">D</span>
               </div>
-              <span className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">Dinithi</span>
             </a>
           </motion.div>
 
-          {/* Desktop Navigation - Windows Taskbar Button Style */}
-          <div className={`hidden md:flex items-center gap-2 ${scrolled ? 'bg-black/40 px-3 py-2 rounded-lg border border-white/10 backdrop-blur-sm' : ''}`}>
-            {navigationItems.map((item) => (
+          {/* Desktop Navigation */}
+          <motion.div className="hidden md:flex items-center gap-1">
+            {navigationItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
@@ -100,106 +112,135 @@ const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className={`relative px-4 py-2.5 rounded-md text-sm font-semibold transition-all duration-200 ${
-                  activeSection === item.href.slice(1)
-                    ? 'bg-gradient-to-r from-purple-600/40 to-purple-500/40 text-purple-200 border-2 border-purple-500/60 shadow-lg shadow-purple-500/30'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10 border-2 border-transparent hover:border-white/20'
-                }`}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="relative group"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span className="relative z-10">{item.name}</span>
-                {/* Windows-style active indicator */}
-                {activeSection === item.href.slice(1) && (
-                  <>
+                <div
+                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${
+                    activeSection === item.href.slice(1)
+                      ? 'text-white'
+                      : 'text-gray-300 group-hover:text-white'
+                  }`}
+                >
+                  {item.name}
+
+                  {/* Creative underline effect */}
+                  <motion.div
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 ${
+                      activeSection === item.href.slice(1)
+                        ? 'opacity-100'
+                        : 'opacity-0 group-hover:opacity-50'
+                    }`}
+                    layoutId={activeSection === item.href.slice(1) ? "activeNav" : undefined}
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+
+                  {/* Animated background for active */}
+                  {activeSection === item.href.slice(1) && (
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-purple-400 to-purple-500 rounded-b-md"
-                      layoutId="activeSection"
-                      initial={false}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}                    />
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-purple-500/20 blur-xl rounded-md -z-10"></div>
-                  </>
-                )}
+                      className="absolute inset-0 bg-gradient-to-r from-purple-600/15 to-pink-500/15 rounded-full -z-10"
+                      layoutId="activeBackground"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+
+                  {/* Glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)'
+                    }}
+                  />
+                </div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Mobile menu button - Windows Style */}
-          <div className="md:hidden">
-            <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`relative p-2.5 rounded-lg transition-all ${
-                scrolled 
-                  ? 'bg-gradient-to-r from-purple-600/30 to-purple-500/30 border-2 border-purple-500/40 shadow-lg shadow-purple-500/30' 
-                  : 'bg-black/50 border-2 border-white/20'
-              } text-gray-300 hover:text-white`}
-              whileHover={{ scale: 1.1, boxShadow: scrolled ? '0 0 20px rgba(168, 85, 247, 0.5)' : 'none' }}
-              whileTap={{ scale: 0.9 }}
+          {/* Mobile menu button */}
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden relative p-2.5 rounded-lg"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <motion.div
+              animate={{ rotate: isOpen ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
+              {isOpen ? (
+                <X
+                  size={24}
+                  className="text-white"
+                />
+              ) : (
+                <Menu
+                  size={24}
+                  className="text-white"
+                />
+              )}
+            </motion.div>
+            {/* Animated background */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-500/20 rounded-lg -z-10"
+              animate={{
+                opacity: isOpen ? 1 : 0.5,
+              }}
+            />
+          </motion.button>
         </div>
 
-        {/* Mobile Navigation - Windows Panel Style */}
+        {/* Mobile Navigation Menu */}
         <AnimatePresence>
-          {isOpen && (            <motion.div
-              initial={{ opacity: 0, height: 0, y: -10 }}
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, y: -20 }}
               animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -10 }}
-              className="md:hidden bg-gradient-to-br from-gray-900/98 via-black/98 to-gray-900/98 backdrop-blur-2xl rounded-xl mt-3 mb-4 border-2 border-purple-500/30 shadow-2xl shadow-purple-500/30 overflow-hidden"
+              exit={{ opacity: 0, height: 0, y: -20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="md:hidden mt-4 pb-4 border-t border-purple-500/20"
             >
-              {/* Windows-style menu header */}
-              <div className="px-4 py-3 bg-gradient-to-r from-purple-700/40 to-purple-600/40 border-b-2 border-purple-500/30">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                  <span className="text-xs text-purple-200 font-semibold ml-2">Navigation Menu</span>
-                </div>
-              </div>
-              
-              <div className="py-2 space-y-1 p-2">
+              <motion.div className="flex flex-col gap-2 mt-4">
                 {navigationItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }}
-                    className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold transition-all duration-200 rounded-lg relative overflow-hidden ${
-                      activeSection === item.href.slice(1)
-                        ? 'text-purple-200 bg-gradient-to-r from-purple-600/40 to-purple-500/40 border-2 border-purple-500/60 shadow-lg shadow-purple-500/30'
-                        : 'text-gray-300 hover:text-white hover:bg-white/10 border-2 border-transparent hover:border-white/20'
-                    }`}
-                    whileHover={{ x: 5, scale: 1.02 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.08 }}
+                    className="relative group"
+                    whileHover={{ x: 8 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    {/* Active indicator bar */}
-                    <div className={`w-1 h-8 rounded-full transition-all ${
-                      activeSection === item.href.slice(1) 
-                        ? 'bg-gradient-to-b from-purple-500 to-purple-400 shadow-lg shadow-purple-500/50' 
-                        : 'bg-transparent'
-                    }`} />
-                    <span className="flex-1">{item.name}</span>
-                    {/* Arrow indicator for active */}
-                    {activeSection === item.href.slice(1) && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="text-purple-400"
-                      >
-                        →
-                      </motion.div>
-                    )}
+                    <div
+                      className={`px-4 py-3 rounded-lg text-sm font-semibold tracking-wide uppercase transition-all duration-300 ${
+                        activeSection === item.href.slice(1)
+                          ? 'bg-gradient-to-r from-purple-600/30 to-pink-500/20 text-white border border-purple-500/40'
+                          : 'text-gray-300 group-hover:text-white group-hover:bg-white/5 border border-transparent'
+                      }`}
+                    >
+                      <span className="flex items-center gap-2">
+                        {activeSection === item.href.slice(1) && (
+                          <motion.span
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                          />
+                        )}
+                        {item.name}
+                      </span>
+                    </div>
                   </motion.a>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
