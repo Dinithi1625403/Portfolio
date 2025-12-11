@@ -908,3 +908,28 @@ textarea:focus {
 .parallax-layer-3 {
   transform: translateZ(30px);
 }
+
+/* Remove focus outline from navigation links */
+a {
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+a:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Specifically for navigation links */
+nav a,
+nav a:focus,
+nav a:focus-visible,
+nav a:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+}

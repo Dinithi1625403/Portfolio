@@ -103,8 +103,7 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <motion.div className="hidden md:flex items-center gap-1">
-            {navigationItems.map((item, index) => (
+          <motion.div className="hidden md:flex items-center gap-1">            {navigationItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
@@ -115,58 +114,36 @@ const Navigation = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="relative group"
+                className="relative group outline-none focus:outline-none"
                 whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                style={{ outline: 'none' }}
               >
-                <div
-                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${
+                <span
+                  className={`px-4 py-2 text-xs font-semibold tracking-wide uppercase transition-all duration-300 outline-none focus:outline-none ${
                     activeSection === item.href.slice(1)
-                      ? 'text-white'
-                      : 'text-gray-300 group-hover:text-white'
+                      ? 'text-purple-600'
+                      : 'text-gray-400 group-hover:text-white'
                   }`}
                 >
                   {item.name}
+                </span>
 
-                  {/* Creative underline effect */}
+                {/* Clean underline effect */}
+                {activeSection === item.href.slice(1) && (
                   <motion.div
-                    className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 ${
-                      activeSection === item.href.slice(1)
-                        ? 'opacity-100'
-                        : 'opacity-0 group-hover:opacity-50'
-                    }`}
-                    layoutId={activeSection === item.href.slice(1) ? "activeNav" : undefined}
+                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
+                    layoutId="activeUnderline"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
-
-                  {/* Animated background for active */}
-                  {activeSection === item.href.slice(1) && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-purple-600/15 to-pink-500/15 rounded-full -z-10"
-                      layoutId="activeBackground"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-
-                  {/* Glow effect on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)'
-                    }}
-                  />
-                </div>
+                )}
               </motion.a>
             ))}
-          </motion.div>
-
-          {/* Mobile menu button */}
+          </motion.div>          {/* Mobile menu button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden relative p-2.5 rounded-lg"
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
           >
             <motion.div
               animate={{ rotate: isOpen ? 90 : 0 }}
@@ -183,18 +160,15 @@ const Navigation = () => {
                   className="text-white"
                 />
               )}
-            </motion.div>
-            {/* Animated background */}
+            </motion.div>            {/* Animated background */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-500/20 rounded-lg -z-10"
+              className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-purple-500/10 rounded-lg -z-10"
               animate={{
                 opacity: isOpen ? 1 : 0.5,
               }}
             />
           </motion.button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
+        </div>        {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -202,7 +176,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto', y: 0 }}
               exit={{ opacity: 0, height: 0, y: -20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="md:hidden mt-4 pb-4 border-t border-purple-500/20"
+              className="md:hidden mt-4 pb-4"
             >
               <motion.div className="flex flex-col gap-2 mt-4">
                 {navigationItems.map((item, index) => (
@@ -212,31 +186,27 @@ const Navigation = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.href);
-                    }}
-                    initial={{ opacity: 0, x: -20 }}
+                    }}                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.08 }}
                     className="relative group"
                     whileHover={{ x: 8 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div
-                      className={`px-4 py-3 rounded-lg text-sm font-semibold tracking-wide uppercase transition-all duration-300 ${
+                  ><div
+                      className={`px-4 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 relative ${
                         activeSection === item.href.slice(1)
-                          ? 'bg-gradient-to-r from-purple-600/30 to-pink-500/20 text-white border border-purple-500/40'
-                          : 'text-gray-300 group-hover:text-white group-hover:bg-white/5 border border-transparent'
+                          ? 'text-purple-600'
+                          : 'text-gray-400 group-hover:text-white'
                       }`}
                     >
-                      <span className="flex items-center gap-2">
-                        {activeSection === item.href.slice(1) && (
-                          <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
-                          />
-                        )}
-                        {item.name}
-                      </span>
+                      <span>{item.name}</span>
+                      {activeSection === item.href.slice(1) && (
+                        <motion.div
+                          className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
+                          layoutId="activeMobileUnderline"
+                          initial={false}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
                     </div>
                   </motion.a>
                 ))}
