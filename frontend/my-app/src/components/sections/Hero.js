@@ -1,255 +1,380 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { OptimizedParticles, SimpleFloatingOrbs } from '@/components/ui/OptimizedParticles';
-import GlitterParticles, { FloatingGlassPanel, TypewriterEffect } from '@/components/ui/GlitterParticles';
-import { Sparkles, Download, Mail } from 'lucide-react';
+import { Github, Linkedin, Code2, Mail, Download, ArrowRight, Sparkles, Terminal, Award } from 'lucide-react';
+import Image from 'next/image';
+import BackgroundEffects from './hero/BackgroundEffects';
+import ScrollIndicator from './hero/ScrollIndicator';
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
-  
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 20,
+        y: (e.clientY / window.innerHeight) * 20
+      });
+    };
+
+    if (!shouldReduceMotion) {
+      window.addEventListener('mousemove', handleMouseMove);
+      return () => window.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, [shouldReduceMotion]);
+
+  const skills = ['React', 'Next.js', 'WordPress', 'Tailwind', 'Node.js', 'JavaScript'];
+
   return (
-    <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-8">
-      {/* Reduced Glitter Particles for Better Performance */}
-      <GlitterParticles 
-        particleCount={shouldReduceMotion ? 10 : 25}
-        enableParallax={!shouldReduceMotion}
-        enableShimmer={!shouldReduceMotion}
-        className="opacity-70"
+    <section className="h-screen relative overflow-hidden bg-black flex items-center justify-center">
+      {/* Background Effects */}
+      <BackgroundEffects 
+        shouldReduceMotion={shouldReduceMotion} 
+        mousePosition={mousePosition} 
+      />
+
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-center">
+        <div className="w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* LEFT SIDE - Name & Role */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-4 space-y-6 text-left lg:text-right"
+          >
+            {/* Status Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm"
+            >
+              <motion.div
+                className="w-2 h-2 bg-purple-400 rounded-full"
+                animate={{
+                  scale: [1, 1.4, 1],
+                  opacity: [1, 0.6, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span className="text-xs font-medium text-purple-300">Available for work</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <div className="space-y-3">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h1 className="text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none">
+                  Dinithi
+                </h1>
+                <div className="h-1 w-24 lg:w-32 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full mt-3 lg:ml-auto" />
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400 font-semibold"
+              >
+                Frontend Developer
+              </motion.h2>
+            </div>
+
+            {/* Skills Pills */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isVisible ? 1 : 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-2 lg:justify-end"
+            >
+              {skills.slice(0, 3).map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + index * 0.1, type: "spring" }}
+                  className="px-3 py-1.5 bg-white/5 border border-purple-500/20 rounded-lg text-sm text-purple-300 backdrop-blur-sm"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              transition={{ delay: 0.7 }}
+              className="flex gap-4 lg:justify-end"
+            >
+              <StatBox value="3+" label="Years" />
+              <StatBox value="20+" label="Projects" />
+            </motion.div>
+          </motion.div>
+
+          {/* CENTER - Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="lg:col-span-4 relative flex items-center justify-center"
+          >
+            {/* Decorative Rings */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="absolute w-[300px] h-[300px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] border border-purple-500/20 rounded-full"
+                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute w-[320px] h-[320px] md:w-[400px] md:h-[400px] lg:w-[440px] lg:h-[440px] border border-indigo-500/10 rounded-full"
+                animate={{ rotate: -360, scale: [1.05, 1, 1.05] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+
+            {/* Main Image */}
+            <motion.div
+              className="relative w-[280px] h-[340px] md:w-[320px] md:h-[390px] lg:w-[350px] lg:h-[420px] z-10"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="relative h-full rounded-2xl overflow-hidden">
+                {/* Gradient Border */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500 p-[3px] rounded-2xl">
+                  <div className="h-full w-full bg-black rounded-2xl overflow-hidden">
+                    <Image
+                      src="/Profile.jpg"
+                      alt="Dinithi - Frontend Developer"
+                      fill
+                      className="object-cover object-center"
+                      priority
+                      quality={95}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  </div>
+                </div>
+
+                {/* Floating Badge */}
+                <motion.div
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/80 backdrop-blur-md border border-purple-500/30 rounded-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="text-purple-400" size={16} />
+                    <span className="text-white text-sm font-medium">Creative Developer</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Floating Icons */}
+              <FloatingIcon
+                icon={Code2}
+                className="-top-4 -right-4"
+                delay={1}
+                animation={{ y: [0, -12, 0], rotate: [0, 8, 0] }}
+              />
+              <FloatingIcon
+                icon={Terminal}
+                className="-bottom-4 -left-4"
+                delay={1.2}
+                animation={{ y: [0, 12, 0], rotate: [0, -8, 0] }}
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT SIDE - Description & CTAs */}
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 100 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-4 space-y-6"
+          >
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-4"
+            >
+              <p className="text-gray-300 text-base lg:text-lg leading-relaxed">
+                I craft beautiful and functional{' '}
+                <span className="text-purple-400 font-semibold">web experiences</span>
+                {' '}with modern technologies and clean code.
+              </p>
+              
+              <div className="inline-flex items-center gap-2 px-3 py-2 bg-purple-500/5 border border-purple-500/10 rounded-lg text-sm text-purple-300">
+                <Terminal size={14} />
+                <span className="font-mono">Passionate about UX</span>
+              </div>
+            </motion.div>
+
+            {/* More Skills */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isVisible ? 1 : 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-2"
+            >
+              {skills.slice(3, 6).map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + index * 0.1, type: "spring" }}
+                  className="px-3 py-1.5 bg-white/5 border border-indigo-500/20 rounded-lg text-sm text-indigo-300 backdrop-blur-sm"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-wrap gap-3"
+            >
+              <CTAButton
+                icon={Mail}
+                label="Get in Touch"
+                primary
+                href="#contact"
+              />
+              <CTAButton
+                icon={Download}
+                label="Resume"
+                href="/resume.pdf"
+              />
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isVisible ? 1 : 0 }}
+              transition={{ delay: 0.9 }}
+              className="flex gap-3"
+            >
+              <SocialLink icon={Github} href="#" />
+              <SocialLink icon={Linkedin} href="#" />
+              <SocialLink icon={Code2} href="#" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Decorative Lines */}
+      <DecorativeLines isVisible={isVisible} />
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator />
+    </section>
+  );
+}
+
+// Helper Components
+function StatBox({ value, label }) {
+  return (
+    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-3 min-w-[80px]">
+      <div className="text-2xl font-bold text-white">{value}</div>
+      <div className="text-xs text-gray-400">{label}</div>
+    </div>
+  );
+}
+
+function FloatingIcon({ icon: Icon, className, delay, animation }) {
+  return (
+    <motion.div
+      className={`absolute w-12 h-12 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 backdrop-blur-sm border border-purple-500/30 rounded-xl flex items-center justify-center ${className}`}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay, type: "spring" }}
+    >
+      <motion.div
+        animate={animation}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Icon className="text-purple-400" size={20} />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function CTAButton({ icon: Icon, label, primary, href }) {
+  return (
+    <motion.a
+      href={href}
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-all ${
+        primary
+          ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500 shadow-lg shadow-purple-500/25'
+          : 'bg-white/5 border border-white/10 text-white hover:border-purple-500/30 backdrop-blur-sm'
+      }`}
+    >
+      <Icon size={16} />
+      {label}
+      {primary && <ArrowRight size={16} />}
+    </motion.a>
+  );
+}
+
+function SocialLink({ icon: Icon, href }) {
+  return (
+    <motion.a
+      href={href}
+      whileHover={{ scale: 1.1, y: -2 }}
+      whileTap={{ scale: 0.9 }}
+      className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:border-purple-500/30 hover:bg-purple-500/10 transition-all backdrop-blur-sm"
+    >
+      <Icon size={18} className="text-gray-400 hover:text-purple-400 transition-colors" />
+    </motion.a>
+  );
+}
+
+function DecorativeLines({ isVisible }) {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Horizontal Lines */}
+      <motion.div
+        className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isVisible ? 1 : 0 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isVisible ? 1 : 0 }}
+        transition={{ duration: 1.5, delay: 0.7 }}
       />
       
-      {/* Reduced Background Particles */}
-      <OptimizedParticles particleCount={shouldReduceMotion ? 5 : 12} />
-      
-      {/* Reduced Floating Orbs */}
-      <SimpleFloatingOrbs count={shouldReduceMotion ? 0 : 2} />{/* Floating Windows-Style Card */}
-      <motion.div 
-        className="relative z-10 w-full max-w-6xl mx-auto"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <FloatingGlassPanel 
-          intensity="medium"
-          className="bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden"
-        >
-          {/* Window Top Bar */}
-          <motion.div 
-            className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-white/10"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="flex items-center space-x-3">
-              <motion.div 
-                className="w-3 h-3 bg-red-500 rounded-full cursor-pointer"
-                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(239, 68, 68, 0.8)" }}
-                whileTap={{ scale: 0.9 }}
-              ></motion.div>
-              <motion.div 
-                className="w-3 h-3 bg-yellow-500 rounded-full cursor-pointer"
-                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(234, 179, 8, 0.8)" }}
-                whileTap={{ scale: 0.9 }}
-              ></motion.div>
-              <motion.div 
-                className="w-3 h-3 bg-green-500 rounded-full cursor-pointer"
-                whileHover={{ scale: 1.2, boxShadow: "0 0 10px rgba(34, 197, 94, 0.8)" }}
-                whileTap={{ scale: 0.9 }}
-              ></motion.div>
-            </div>
-            <motion.div 
-              className="text-gray-400 text-sm font-medium flex items-center gap-2"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Sparkles size={16} className="text-purple-400" />
-              Dinithi Portfolio v2.0
-            </motion.div>
-            <div className="w-16"></div>
-          </motion.div>          
-          {/* Window Content */}
-          <div className="flex flex-col lg:flex-row p-8 lg:p-12 gap-8 lg:gap-16">
-            {/* Left Side - Portrait Image */}
-            <motion.div 
-              className="flex-1 flex justify-center lg:justify-start"
-              initial={{ opacity: 0, x: -60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
-              <motion.div 
-                className="relative w-72 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {/* Removed Animated Border */}
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <Image
-                    src="/Profile.jpg"
-                    alt="Dinithi Profile"
-                    fill
-                    className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                    priority
-                  />
-                  {/* Hover Overlay */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0"
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-              </motion.div>
-            </motion.div>            
-            {/* Right Side - Hero Content */}
-            <motion.div 
-              className="flex-1 flex flex-col justify-center space-y-6"
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-              >
-                <motion.div 
-                  className="inline-flex items-center px-4 py-2 bg-purple-500/20 border border-purple-400/30 rounded-full text-purple-300 text-sm font-medium tracking-wide backdrop-blur-sm cursor-pointer"
-                  whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.5)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.span 
-                    className="w-2 h-2 bg-purple-400 rounded-full mr-2"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      opacity: [1, 0.5, 1]
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}                  ></motion.span>
-                  Frontend Developer
-                </motion.div>
-              </motion.div>
-              
-              {/* Title */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-              >
-                <h1 className="text-4xl lg:text-6xl xl:text-7xl font-light text-white mb-4 leading-tight">
-                  Hi, I am{' '}
-                  <motion.span 
-                    className="text-transparent bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text font-medium inline-block"
-                    animate={{
-                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{
-                      backgroundSize: '200% 200%',
-                    }}
-                  >
-                    Dinithi
-                  </motion.span>
-                </h1>
-              </motion.div>
-                {/* Subtitle */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              >
-                <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
-                  <TypewriterEffect 
-                    text="I build "
-                    className=""
-                    speed={100}
-                    cursor={false}
-                    startDelay={2000}
-                  />
-                  <motion.span 
-                    className="text-purple-400 font-medium"
-                    whileHover={{ 
-                      scale: 1.05,
-                      textShadow: "0 0 20px rgba(168, 85, 247, 0.8)"
-                    }}
-                  >
-                    <TypewriterEffect 
-                      text="WordPress plugin"
-                      className="text-purple-400 font-medium"
-                      speed={80}
-                      cursor={false}
-                      startDelay={2800}
-                    />
-                  </motion.span>
-                  <TypewriterEffect 
-                    text=" experiences."
-                    className=""
-                    speed={120}
-                    cursor={true}
-                    startDelay={4200}
-                  />
-                </p>
-              </motion.div>
-              
-              {/* Buttons */}
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 pt-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4, duration: 0.8 }}
-              >
-                <motion.button 
-                  className="group relative px-8 py-4 bg-transparent border-2 border-purple-400/50 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
-                  whileHover={{ scale: 1.05, borderColor: "rgba(168, 85, 247, 0.8)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.span 
-                    className="relative z-10 flex items-center justify-center gap-2"
-                  >
-                    <Download size={20} />
-                    Download CV
-                  </motion.span>
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-purple-600/20"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  ></motion.div>
-                </motion.button>
-                
-                <motion.button 
-                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl text-white font-medium tracking-wide overflow-hidden button-glow"
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.span 
-                    className="relative z-10 flex items-center justify-center gap-2"
-                  >
-                    <Mail size={20} />
-                    Contact Me
-                  </motion.span>
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-500"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.5 }}
-                  ></motion.div>
-                </motion.button>              </motion.div>
-            </motion.div>
-          </div>
-        </FloatingGlassPanel>
-      </motion.div>
-    </section>
+      {/* Vertical Lines */}
+      <motion.div
+        className="absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-500/20 to-transparent"
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: isVisible ? 1 : 0 }}
+        transition={{ duration: 1.5, delay: 0.6 }}
+      />
+      <motion.div
+        className="absolute right-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent"
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: isVisible ? 1 : 0 }}
+        transition={{ duration: 1.5, delay: 0.8 }}
+      />
+    </div>
   );
 }

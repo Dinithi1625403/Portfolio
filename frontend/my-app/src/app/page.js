@@ -71,7 +71,7 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         className="min-h-screen text-white relative"
       >
-        <Navigation />
+        
         <main className="relative z-10">
           <Hero />
           
