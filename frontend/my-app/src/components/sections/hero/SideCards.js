@@ -68,7 +68,7 @@ function StatCard({ icon: Icon, value, label }) {
       whileHover={{ y: -4, scale: 1.02 }}
       className="relative group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-purple-500/30 transition-all"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-purple-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="relative">
         <Icon className="text-purple-400 mb-2" size={20} />
         <div className="text-2xl font-bold text-white">{value}</div>

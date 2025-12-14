@@ -23,7 +23,7 @@ export default function ProfileImage({ isVisible }) {
       >
         <div className="relative h-full rounded-2xl overflow-hidden">
           {/* Gradient Border */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500 p-[2px] rounded-2xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-violet-500 to-purple-800 p-[2px] rounded-2xl">
             <div className="h-full w-full bg-black rounded-2xl overflow-hidden">
               <Image
                 src="/Profile.jpg"
@@ -49,7 +49,7 @@ export default function ProfileImage({ isVisible }) {
           duration={3}
         />
         <FloatingIcon
-          className="-bottom-3 -left-3 w-12 h-12 rounded-xl from-indigo-500/20 to-violet-500/20 border-indigo-400/30 shadow-indigo-500/20"
+          className="-bottom-3 -left-3 w-12 h-12 rounded-xl from-purple-500/20 to-violet-500/20 border-purple-400/30 shadow-purple-500/20"
           icon={Terminal}
           iconSize={18}
           animation={{ y: [0, 10, 0], rotate: [0, -5, 0] }}

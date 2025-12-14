@@ -17,7 +17,7 @@ export default function HeroHeader({ isVisible }) {
         transition={{ delay: 0.2, type: "spring" }}
         className="inline-block mb-6"
       >
-        <div className="inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm">
+        <div className="inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-purple-500/10 to-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm">
           <motion.div
             className="w-2 h-2 bg-purple-400 rounded-full"
             animate={{
@@ -47,17 +47,17 @@ export default function HeroHeader({ isVisible }) {
         <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
           Hi, I'm{' '}
           <span className="relative inline-block">
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-purple-600">
               Dinithi
             </span>
             <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400 blur-xl opacity-50"
+              className="absolute inset-0 bg-gradient-to-r from-purple-400 via-violet-400 to-purple-600 blur-xl opacity-50"
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
           </span>
         </h1>
-        
+
         <div className="flex items-center justify-center gap-3">
           <motion.div
             className="h-1 w-12 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full"

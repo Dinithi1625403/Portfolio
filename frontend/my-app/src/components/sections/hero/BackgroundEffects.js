@@ -31,7 +31,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl"
           animate={{
             x: shouldReduceMotion ? 0 : -mousePosition.x,
             y: shouldReduceMotion ? 0 : -mousePosition.y,
@@ -40,7 +40,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-3xl"
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -63,7 +63,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
       />
 
       {/* Purple Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-violet-900/5 pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-purple-900/5 pointer-events-none z-20" />
     </>
   );
 }

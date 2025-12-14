@@ -1,115 +1,87 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Award, Star } from 'lucide-react';
 import { portfolioData } from '@/data/portfolioData';
-import WindowContainer from '@/components/ui/WindowContainer';
-import WindowHeaderBar from '@/components/ui/WindowHeaderBar';
+import { Award, BadgeCheck, Calendar } from 'lucide-react';
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-20 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '3s', animationDuration: '8s'}}></div>
-        <div className="absolute top-1/2 left-20 w-32 h-32 bg-purple-600/8 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header - Outside Window */}
+    <section className="py-32 relative overflow-hidden bg-[#030014]">
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="mb-24 flex items-center justify-between"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Professional <span className="text-purple-400">Certifications</span>
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Verified credentials and professional development that showcase my commitment to continuous learning and skill advancement.
-          </p>
-        </motion.div>        {/* Floating Window Container */}
-        <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden floating-window">
-          {/* Window Header - Outside Padding */}
-          <WindowHeaderBar title="Certifications.exe" />
-          
-          <div className="p-8 md:p-10">
-            {/* Certifications Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
+          <div>
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+              Licensed & <span className="text-purple-500">Certified</span>
+            </h2>
+            <div className="h-1 w-32 bg-purple-500 rounded-full"></div>
+          </div>
+          <Award className="hidden md:block text-purple-900/20 w-32 h-32 -rotate-12" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioData.certifications.map((cert, index) => (
             <motion.div
-              key={cert.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-gradient-to-br from-purple-900/50 via-purple-800/40 to-black/50 rounded-lg border border-purple-500/30 hover:border-purple-400 overflow-hidden group shadow-lg hover:shadow-purple-500/20 transition-all"
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="relative group h-full"
             >
-              {/* Image Section */}
-              <div className="relative h-56 overflow-hidden bg-black">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                
-                {/* Award Icon */}
-                <div className="absolute top-4 right-4 p-2 bg-purple-500/30 backdrop-blur-sm rounded-lg border border-purple-400/50">
-                  <Award className="text-purple-300" size={20} />
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-700 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
 
-              {/* Content Section */}
-              <div className="p-6">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
-                  {cert.title}
-                </h3>
-                
-                <p className="text-purple-300 text-sm mb-3 font-semibold">{cert.issuer}</p>
-                
-                {/* Skills Badge */}
-                {cert.skills && (
-                  <div className="mb-4 inline-block">
-                    <span className="px-3 py-1 bg-purple-500/30 text-purple-200 rounded-full text-xs font-medium border border-purple-400/50">
-                      {cert.skills}
-                    </span>
+              <div className="relative h-full bg-[#0a0a0f] border border-white/10 rounded-2xl p-6 flex flex-col backdrop-blur-3xl overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-purple-500/20 transition-all"></div>
+
+                {/* Certificate Image */}
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/5 group-hover:border-purple-500/30 transition-colors">
+                  <div className="absolute inset-0 bg-purple-900/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                  {/* Fallback pattern removed to ensure visibility */}
+                  {cert.image && (
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="relative z-20 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                  )}
+                </div>
+
+                <div className="relative z-10 flex-grow flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="p-2 bg-purple-500/10 rounded-lg text-purple-400 group-hover:text-white group-hover:bg-purple-500 transition-colors">
+                        <BadgeCheck size={24} />
+                      </div>
+                      <span className="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded-full flex items-center gap-1">
+                        <Calendar size={10} /> {cert.date}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
+                      {cert.title}
+                    </h3>
                   </div>
-                )}
-                
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-purple-500/20">
-                  <span className="text-xs text-gray-400">{cert.date}</span>
-                  <Star className="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" size={16} fill="currentColor" />                </div>
+
+                  <div className="pt-4 border-t border-white/5 mt-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
+                        {cert.issuer.charAt(0)}
+                      </div>
+                      <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{cert.issuer}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
-            </motion.div>
-          </div>
         </div>
-      </div>
-
-      {/* Stats Section - Outside Window */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="p-8 bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl border border-purple-500/20 text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">Certified & Verified</h3>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            All certifications are obtained from recognized institutions and platforms, demonstrating expertise across diverse technical domains including cloud computing, programming, and project management.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

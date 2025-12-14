@@ -1,118 +1,145 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Trophy, Star } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { portfolioData } from '@/data/portfolioData';
-import WindowContainer from '@/components/ui/WindowContainer';
-import WindowHeaderBar from '@/components/ui/WindowHeaderBar';
+import { Trophy, Calendar, Star, Award, ExternalLink } from 'lucide-react';
+import GlitterParticles from '../ui/GlitterParticles';
+import ScrollRevealText from '../ui/ScrollRevealText';
 
-const Achievements = () => {
+const AchievementCard = ({ item, index }) => {
+  const ref = useRef(null);
+
+  // Create a scroll-linked animation for each card
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax effects based on scroll position of this specific card
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+
+  // Smooth out the motion
+  const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
+
+  const isEven = index % 2 === 0;
+
   return (
-    <section id="achievements" className="py-20 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '3s', animationDuration: '8s'}}></div>
-        <div className="absolute top-1/2 right-20 w-32 h-32 bg-purple-600/8 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header - Outside Window */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Awards & <span className="text-purple-400">Achievements</span>
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Recognition for innovation and excellence in competitions, hackathons, and academic pursuits that demonstrate my passion for technology and problem-solving.
-          </p>
-        </motion.div>        {/* Floating Window Container */}
-        <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-purple-500/20 overflow-hidden floating-window">
-          {/* Window Header - Outside Padding */}
-          <WindowHeaderBar title="Awards.exe" />
-          
-          <div className="p-8 md:p-10">
-            {/* Achievements Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-          {portfolioData.achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-gradient-to-br from-purple-900/50 via-purple-800/40 to-black/50 rounded-lg border border-purple-500/30 hover:border-purple-400 overflow-hidden group shadow-lg hover:shadow-purple-500/20 transition-all"
-            >
-              {/* Image Section */}
-              <div className="relative h-56 overflow-hidden bg-black">
-                <img
-                  src={achievement.image}
-                  alt={achievement.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                
-                {/* Trophy Icon */}
-                <div className="absolute top-4 right-4 p-2 bg-purple-500/30 backdrop-blur-sm rounded-lg border border-purple-400/50">
-                  <Trophy className="text-purple-300" size={20} />
-                </div>
-              </div>
+    <motion.div
+      ref={ref}
+      style={{
+        opacity,
+        scale,
+        y: smoothY
+      }}
+      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center mb-32 relative z-10`}
+    >
+      {/* Image Side */}
+      <div className="w-full lg:w-3/5 group">
+        <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/10] bg-zinc-900 shadow-2xl">
+          {/* Image Overlay Gradient */}
+          <div className="absolute inset-0 bg-purple-900/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
 
-              {/* Content Section */}
-              <div className="p-6">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
-                  {achievement.title}
-                </h3>
-                  <p className="text-purple-300 text-sm mb-3 line-clamp-2">
-                  {achievement.description}
-                </p>
-                
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-purple-500/20">
-                  <span className="text-xs text-gray-400">{achievement.date}</span>
-                  <Star className="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" size={16} fill="currentColor" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-            </motion.div>
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <Award className="w-20 h-20 text-white/10" />
+            </div>
+          )}
+
+          {/* Floating Badge */}
+          <div className="absolute top-6 left-6 z-20">
+            <div className="bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
+              <Trophy size={14} className="text-yellow-400" />
+              <span className="text-xs font-bold text-white uppercase tracking-wider">Honor</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Highlights Section - Outside Window */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="p-8 bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 rounded-xl border border-purple-500/20"
-        >
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h4 className="text-3xl font-bold text-purple-400 mb-2">5+</h4>
-              <p className="text-gray-300">Major Competition Awards</p>
-            </div>
-            <div>
-              <h4 className="text-3xl font-bold text-purple-400 mb-2">100%</h4>
-              <p className="text-gray-300">Innovation Focus</p>
-            </div>
-            <div>
-              <h4 className="text-3xl font-bold text-purple-400 mb-2">5+</h4>
-              <p className="text-gray-300">Team Members Collaborated</p>
-            </div>
+      {/* content Side */}
+      <div className="w-full lg:w-2/5 relative">
+        {/* Background Glow behind text */}
+        <div className="absolute -inset-10 bg-purple-600/20 blur-[60px] rounded-full opacity-0 lg:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+        <div className="relative z-10 p-6 lg:p-0 text-center lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start gap-3 mb-4 text-purple-300">
+            <Calendar size={18} />
+            <span className="font-mono text-sm tracking-widest uppercase">{item.date}</span>
           </div>
-        </motion.div>
+
+          <div className="mb-6">
+            <ScrollRevealText
+              text={item.title}
+              className="text-3xl md:text-4xl font-bold text-white leading-tight justify-center lg:justify-start"
+              speed={0.03}
+            />
+          </div>
+
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm mb-6 hover:bg-white/[0.06] transition-colors duration-300">
+            <ScrollRevealText
+              text={item.description}
+              className="text-zinc-400 text-lg leading-relaxed text-left"
+              delay={0.3}
+              speed={0.01}
+            />
+          </div>
+
+          <div className="flex items-center justify-center lg:justify-start gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={20} className="text-yellow-500 fill-yellow-500/20" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Achievements = () => {
+  return (
+    <section className="py-32 relative bg-black overflow-hidden" id="achievements">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-purple-900/10 to-transparent" />
+        <GlitterParticles particleCount={30} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+        {/* Section Header */}
+        <div className="text-center mb-40">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-block"
+          >
+            <div className="flex items-center gap-2 justify-center mb-4">
+              <span className="h-px w-8 bg-purple-500/50"></span>
+              <span className="text-purple-400 uppercase tracking-[0.2em] text-sm font-bold">Excellence</span>
+              <span className="h-px w-8 bg-purple-500/50"></span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Honors & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Awards</span>
+            </h2>
+          </motion.div>
+        </div>
+
+        {/* Achievements List - Vertical Flow */}
+        <div className="flex flex-col gap-20">
+          {portfolioData.achievements.map((item, index) => (
+            <AchievementCard key={index} item={item} index={index} />
+          ))}
+        </div>
+
       </div>
     </section>
   );

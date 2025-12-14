@@ -12,7 +12,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // Determine active section based on scroll position
       const sections = navigationItems.map(item => item.href.slice(1));
       const currentSection = sections.find(section => {
@@ -23,7 +23,7 @@ const Navigation = () => {
         }
         return false;
       });
-      
+
       if (currentSection) {
         setActiveSection(currentSection);
       }
@@ -53,11 +53,10 @@ const Navigation = () => {
     >
       {/* Animated gradient background */}
       <motion.div
-        className={`absolute inset-0 transition-all duration-500 ${
-          scrolled
-            ? 'bg-gradient-to-b from-slate-950/95 via-slate-900/90 to-slate-950/80 backdrop-blur-xl'
+        className={`absolute inset-0 transition-all duration-500 ${scrolled
+            ? 'bg-[#030014]/80 backdrop-blur-xl border-b border-white/5'
             : 'bg-transparent backdrop-blur-sm'
-        }`}
+          }`}
         initial={false}
       />
 
@@ -104,41 +103,40 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <motion.div className="hidden md:flex items-center gap-1">            {navigationItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className="relative group outline-none focus:outline-none"
-                whileHover={{ y: -2 }}
-                style={{ outline: 'none' }}
-              >
-                <span
-                  className={`px-4 py-2 text-xs font-semibold tracking-wide uppercase transition-all duration-300 outline-none focus:outline-none ${
-                    activeSection === item.href.slice(1)
-                      ? 'text-purple-600'
-                      : 'text-gray-400 group-hover:text-white'
+            <motion.a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(item.href);
+              }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className="relative group outline-none focus:outline-none"
+              whileHover={{ y: -2 }}
+              style={{ outline: 'none' }}
+            >
+              <span
+                className={`px-4 py-2 text-xs font-semibold tracking-wide uppercase transition-all duration-300 outline-none focus:outline-none ${activeSection === item.href.slice(1)
+                    ? 'text-purple-600'
+                    : 'text-gray-400 group-hover:text-white'
                   }`}
-                >
-                  {item.name}
-                </span>
+              >
+                {item.name}
+              </span>
 
-                {/* Clean underline effect */}
-                {activeSection === item.href.slice(1) && (
-                  <motion.div
-                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
-                    layoutId="activeUnderline"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </motion.a>
-            ))}
+              {/* Clean underline effect */}
+              {activeSection === item.href.slice(1) && (
+                <motion.div
+                  className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
+                  layoutId="activeUnderline"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.a>
+          ))}
           </motion.div>          {/* Mobile menu button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
@@ -186,18 +184,17 @@ const Navigation = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.href);
-                    }}                    initial={{ opacity: 0, x: -20 }}
+                    }} initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.08 }}
                     className="relative group"
                     whileHover={{ x: 8 }}
                   ><div
-                      className={`px-4 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 relative ${
-                        activeSection === item.href.slice(1)
-                          ? 'text-purple-600'
-                          : 'text-gray-400 group-hover:text-white'
+                    className={`px-4 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 relative ${activeSection === item.href.slice(1)
+                        ? 'text-purple-600'
+                        : 'text-gray-400 group-hover:text-white'
                       }`}
-                    >
+                  >
                       <span>{item.name}</span>
                       {activeSection === item.href.slice(1) && (
                         <motion.div

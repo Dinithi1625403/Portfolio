@@ -80,7 +80,7 @@ export default function Hero() {
                 </motion.h3>
                 <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
                   Dinithi <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400 animate-gradient-x">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
                     Dewmini
                   </span>
                 </h1>
@@ -214,7 +214,7 @@ export default function Hero() {
               desc="Get to know my journey"
               icon={User}
               href="#about"
-              color="from-violet-600 to-purple-600"
+              color="from-purple-700 to-purple-600"
               delay={0.4}
             />
             <NavCard
@@ -230,7 +230,7 @@ export default function Hero() {
               desc="Tools & technologies"
               icon={Cpu}
               href="#skills"
-              color="from-violet-500 to-purple-500"
+              color="from-purple-700 to-purple-500"
               delay={0.6}
             />
             <NavCard
@@ -238,7 +238,7 @@ export default function Hero() {
               desc="Let's work together"
               icon={Send}
               href="#contact"
-              color="from-purple-500 to-violet-500"
+              color="from-purple-500 to-purple-700"
               delay={0.7}
             />
           </motion.div>

@@ -7,18 +7,18 @@ import { motion, useReducedMotion, useAnimation } from 'framer-motion';
  * GlitterParticles - Advanced glittering particle system with multiple layers
  * Features: Purple/cyan particles, shimmer effects, parallax layers
  */
-export default function GlitterParticles({ 
+export default function GlitterParticles({
   particleCount = 40,
   className = '',
   enableParallax = true,
-  enableShimmer = true 
+  enableShimmer = true
 }) {
   const shouldReduceMotion = useReducedMotion();
-  
+
   // Generate particles with memoization for performance
   const particles = useMemo(() => {
     if (shouldReduceMotion) return { layer1: [], layer2: [], layer3: [] };
-    
+
     const generateLayer = (count, sizeRange, opacityRange, speedMultiplier = 1) => {
       return Array.from({ length: count }, (_, i) => ({
         id: `particle-${i}`,
@@ -28,7 +28,7 @@ export default function GlitterParticles({
         duration: (Math.random() * 15 + 10) * speedMultiplier,
         delay: Math.random() * 8,
         opacity: Math.random() * (opacityRange[1] - opacityRange[0]) + opacityRange[0],
-        color: Math.random() > 0.5 ? 'purple' : 'cyan',
+        color: Math.random() > 0.5 ? 'purple' : 'lavender',
         rotationSpeed: Math.random() * 360 + 180,
         shimmerDelay: Math.random() * 3,
         floatAmplitude: Math.random() * 30 + 10,
@@ -50,7 +50,7 @@ export default function GlitterParticles({
   const getParticleGradient = (color, opacity) => {
     const gradients = {
       purple: `radial-gradient(circle, rgba(139, 92, 246, ${opacity * 0.8}) 0%, rgba(168, 85, 247, ${opacity * 0.6}) 40%, rgba(192, 132, 252, ${opacity * 0.3}) 70%, transparent 100%)`,
-      cyan: `radial-gradient(circle, rgba(34, 211, 238, ${opacity * 0.8}) 0%, rgba(6, 182, 212, ${opacity * 0.6}) 40%, rgba(103, 232, 249, ${opacity * 0.3}) 70%, transparent 100%)`
+      lavender: `radial-gradient(circle, rgba(233, 213, 255, ${opacity * 0.8}) 0%, rgba(216, 180, 254, ${opacity * 0.6}) 40%, rgba(192, 132, 252, ${opacity * 0.3}) 70%, transparent 100%)`
     };
     return gradients[color];
   };
@@ -100,7 +100,7 @@ export default function GlitterParticles({
     <div
       key={`layer-${layerIndex}`}
       className={`absolute inset-0 pointer-events-none ${enableParallax ? `z-${layerIndex * 10}` : ''}`}
-      style={{ 
+      style={{
         transform: enableParallax ? `translateZ(${layerIndex * 10}px)` : 'none',
       }}
     >
@@ -115,11 +115,11 @@ export default function GlitterParticles({
             borderRadius: '50%',
             filter: enableShimmer ? 'brightness(1.2) saturate(1.3)' : 'none',
           }}
-          initial={{ 
-            x: `${particle.x}%`, 
+          initial={{
+            x: `${particle.x}%`,
             y: `${particle.y}%`,
             scale: 0,
-            opacity: 0 
+            opacity: 0
           }}
           animate={{
             ...swirlVariants(particle).animate,
@@ -145,9 +145,9 @@ export default function GlitterParticles({
               style={{
                 left: `${20 + i * 10}%`,
                 top: `${30 + (i % 3) * 20}%`,
-                background: i % 2 === 0 ? 
+                background: i % 2 === 0 ?
                   'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)' :
-                  'radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, transparent 70%)'
+                  'radial-gradient(circle, rgba(233, 213, 255, 0.4) 0%, transparent 70%)'
               }}
             />
           ))}
@@ -159,22 +159,22 @@ export default function GlitterParticles({
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
       {/* Background ambient glow */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30"
         style={{
           background: `
             radial-gradient(ellipse at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 70%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(216, 180, 254, 0.08) 0%, transparent 50%),
             radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 60%)
           `,
         }}
       />
-      
+
       {/* Render particle layers */}
       {renderParticleLayer(particles.layer1, 1)}
       {renderParticleLayer(particles.layer2, 2)}
       {renderParticleLayer(particles.layer3, 3)}
-      
+
       {/* Additional glitter sparkle overlay */}
       <div className="absolute inset-0">
         {Array.from({ length: 6 }).map((_, i) => (
@@ -206,14 +206,14 @@ export default function GlitterParticles({
 /**
  * FloatingGlassPanel - Subtle floating animation for glass panels
  */
-export function FloatingGlassPanel({ 
-  children, 
-  className = '', 
+export function FloatingGlassPanel({
+  children,
+  className = '',
   intensity = 'medium',
-  ...props 
+  ...props
 }) {
   const shouldReduceMotion = useReducedMotion();
-  
+
   const floatIntensity = {
     subtle: { y: [-2, 2, -2], duration: 6 },
     medium: { y: [-5, 5, -5], duration: 4 },
@@ -255,13 +255,13 @@ export function FloatingGlassPanel({
 /**
  * TypewriterEffect - Smooth typewriter animation for text
  */
-export function TypewriterEffect({ 
-  text, 
-  className = '', 
-  speed = 50, 
+export function TypewriterEffect({
+  text,
+  className = '',
+  speed = 50,
   startDelay = 0,
   cursor = true,
-  onComplete 
+  onComplete
 }) {
   const [displayText, setDisplayText] = React.useState('');
   const [showCursor, setShowCursor] = React.useState(cursor);
@@ -277,7 +277,7 @@ export function TypewriterEffect({
 
     const timer = setTimeout(() => {
       let currentIndex = 0;
-      
+
       const typeInterval = setInterval(() => {
         if (currentIndex <= text.length) {
           setDisplayText(text.slice(0, currentIndex));
@@ -285,7 +285,7 @@ export function TypewriterEffect({
         } else {
           clearInterval(typeInterval);
           onComplete?.();
-          
+
           // Hide cursor after completion
           if (cursor) {
             setTimeout(() => setShowCursor(false), 1000);

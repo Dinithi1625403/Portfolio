@@ -22,11 +22,11 @@ const Footer = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-20 w-48 h-48 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{animationDelay: '2s', animationDuration: '6s'}}></div>
+        <div className="absolute bottom-0 right-20 w-48 h-48 bg-purple-400/5 rounded-full blur-3xl animate-bounce" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <WindowContainer className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl shadow-purple-500/20 overflow-hidden floating-window">
+        <WindowContainer className="bg-[#030014]/60 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl shadow-purple-500/10 overflow-hidden floating-window">
           <WindowHeaderBar title="Footer_Info.html" />
 
           {/* Main Footer Content */}
@@ -43,10 +43,10 @@ const Footer = () => {
                   {portfolioData.personal.name}
                 </h3>
                 <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-                  Full Stack Developer passionate about creating innovative digital solutions. 
+                  Full Stack Developer passionate about creating innovative digital solutions.
                   Always excited to take on new challenges and build amazing experiences.
                 </p>
-                
+
                 {/* Social Links */}
                 <div className="flex gap-4">
                   {portfolioData.socialLinks.map((social, index) => {
@@ -121,7 +121,7 @@ const Footer = () => {
                 <div className="space-y-3 text-sm">
                   <div className="text-gray-300">
                     <div className="text-gray-400 mb-1">Email</div>
-                    <a 
+                    <a
                       href={`mailto:${portfolioData.personal.email}`}
                       className="hover:text-primary-400 transition-colors"
                     >
@@ -130,7 +130,7 @@ const Footer = () => {
                   </div>
                   <div className="text-gray-300">
                     <div className="text-gray-400 mb-1">Phone</div>
-                    <a 
+                    <a
                       href={`tel:${portfolioData.personal.phone}`}
                       className="hover:text-primary-400 transition-colors"
                     >
@@ -164,7 +164,7 @@ const Footer = () => {
               </motion.div>
               <span>and Next.js</span>
             </div>
-              <span className="text-gray-400 text-sm">
+            <span className="text-gray-400 text-sm">
               Built with Next.js, Tailwind CSS & Framer Motion
             </span>
           </motion.div>
