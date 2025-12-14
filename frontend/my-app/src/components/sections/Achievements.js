@@ -33,7 +33,7 @@ const AchievementCard = ({ item, index }) => {
         scale,
         y: smoothY
       }}
-      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center mb-32 relative z-10`}
+      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center mb-20 lg:mb-32 relative z-10`}
     >
       {/* Image Side */}
       <div className="w-full lg:w-3/5 group">
@@ -77,7 +77,7 @@ const AchievementCard = ({ item, index }) => {
           <div className="mb-6">
             <ScrollRevealText
               text={item.title}
-              className="text-3xl md:text-4xl font-bold text-white leading-tight justify-center lg:justify-start"
+              className="text-2xl md:text-4xl font-bold text-white leading-tight justify-center lg:justify-start"
               speed={0.03}
             />
           </div>
@@ -104,7 +104,7 @@ const AchievementCard = ({ item, index }) => {
 
 const Achievements = () => {
   return (
-    <section className="py-32 relative bg-black overflow-hidden" id="achievements">
+    <section className="py-20 lg:py-32 relative bg-black overflow-hidden" id="achievements">
       {/* Dynamic Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-purple-900/10 to-transparent" />
@@ -114,7 +114,7 @@ const Achievements = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-40">
+        <div className="text-center mb-20 md:mb-40">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -127,14 +127,14 @@ const Achievements = () => {
               <span className="text-purple-400 uppercase tracking-[0.2em] text-sm font-bold">Excellence</span>
               <span className="h-px w-8 bg-purple-500/50"></span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6">
               Honors & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Awards</span>
             </h2>
           </motion.div>
         </div>
 
         {/* Achievements List - Vertical Flow */}
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-12 lg:gap-20">
           {portfolioData.achievements.map((item, index) => (
             <AchievementCard key={index} item={item} index={index} />
           ))}

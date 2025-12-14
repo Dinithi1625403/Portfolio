@@ -130,7 +130,7 @@ const Skills = () => {
         : skillsData.filter(s => s.category === activeCategory);
 
     return (
-        <section id="skills" className="min-h-screen py-32 bg-black relative overflow-hidden">
+        <section id="skills" className="min-h-screen py-20 lg:py-32 bg-black relative overflow-hidden">
 
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
@@ -162,7 +162,7 @@ const Skills = () => {
                         className="flex flex-col md:flex-row md:items-end justify-between gap-6"
                     >
                         <div>
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-0">
+                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-0">
                                 Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Arsenal</span>
                             </h2>
                             <p className="text-gray-400 max-w-lg text-lg leading-relaxed mt-4 md:mt-2">

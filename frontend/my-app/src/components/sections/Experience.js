@@ -4,7 +4,7 @@ import { portfolioData } from '@/data/portfolioData';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 bg-black relative">
+    <section id="experience" className="py-20 lg:py-32 bg-black relative">
       <div className="max-w-4xl mx-auto px-6 relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -13,7 +13,7 @@ const Experience = () => {
           className="mb-20 text-center"
         >
           <span className="text-purple-500 text-sm tracking-[0.2em] uppercase font-medium">Career Path</span>
-          <h2 className="text-4xl md:text-5xl font-light text-white mt-3">Experience</h2>
+          <h2 className="text-3xl md:text-5xl font-light text-white mt-3">Experience</h2>
         </motion.div>
 
         <div className="space-y-12">

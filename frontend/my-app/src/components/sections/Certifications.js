@@ -5,7 +5,7 @@ import { Award, BadgeCheck, Calendar } from 'lucide-react';
 
 const Certifications = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-[#030014]">
+    <section className="py-20 lg:py-32 relative overflow-hidden bg-[#030014]">
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -13,10 +13,10 @@ const Certifications = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 flex items-center justify-between"
+          className="mb-12 md:mb-24 flex items-center justify-between"
         >
           <div>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
               Licensed & <span className="text-purple-500">Certified</span>
             </h2>
             <div className="h-1 w-32 bg-purple-500 rounded-full"></div>

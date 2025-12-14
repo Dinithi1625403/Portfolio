@@ -30,7 +30,7 @@ const Card = ({ children, className = "", delay = 0 }) => (
 
 const About = () => {
   return (
-    <section id="about" className="min-h-screen py-32 relative overflow-hidden bg-black">
+    <section id="about" className="min-h-screen py-20 lg:py-32 relative overflow-hidden bg-black">
       {/* Background Elements - Subtle & Deep */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-[20%] -right-[10%] w-[1000px] h-[1000px] bg-purple-900/5 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
@@ -55,7 +55,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white max-w-5xl leading-[1.1]"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white max-w-5xl leading-[1.1]"
           >
             Crafting logic with <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">precision</span>, designing with <span className="italic font-serif font-light text-purple-200">soul.</span>
           </motion.h2>
@@ -65,7 +65,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
 
           {/* 1. Main Bio Card - Focus on Typography & Airiness */}
-          <Card className="md:col-span-8 flex flex-col justify-between min-h-[400px]" delay={0.1}>
+          <Card className="md:col-span-8 flex flex-col justify-between min-h-[300px] md:min-h-[400px]" delay={0.1}>
             <div>
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3.5 rounded-full bg-purple-500/5 border border-purple-500/10 text-purple-300">
@@ -88,7 +88,7 @@ const About = () => {
           </Card>
 
           {/* 2. Abstract Code Philosophy - Monochrome & Clean */}
-          <Card className="md:col-span-4 bg-[#080808] border-purple-500/5 min-h-[400px] flex flex-col" delay={0.2}>
+          <Card className="md:col-span-4 bg-[#080808] border-purple-500/5 min-h-[300px] md:min-h-[400px] flex flex-col" delay={0.2}>
             <div className="flex items-center gap-2 mb-8 opacity-50">
               <div className="w-2.5 h-2.5 rounded-full bg-purple-500/50" />
               <div className="w-2.5 h-2.5 rounded-full bg-purple-500/30" />

@@ -31,7 +31,7 @@ export default function Hero() {
   const skills = ['React', 'Next.js', 'WordPress', 'Tailwind', 'Node.js', 'JavaScript'];
 
   return (
-    <section className="h-screen relative overflow-hidden bg-black flex items-center justify-center">
+    <section className="min-h-screen lg:h-screen relative overflow-hidden bg-black flex items-center justify-center py-20 lg:py-0">
       {/* Background Effects */}
       <BackgroundEffects
         shouldReduceMotion={shouldReduceMotion}
@@ -47,7 +47,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-4 space-y-6 text-left lg:text-right"
+            className="lg:col-span-4 space-y-6 text-center lg:text-right"
           >
             {/* Status Badge */}
             <motion.div
@@ -78,7 +78,7 @@ export default function Hero() {
                 >
                   Hi, I'm
                 </motion.h3>
-                <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
                   Dinithi <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
                     Dewmini
@@ -112,7 +112,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-4 pt-2"
+              className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-end"
             >
               <CTAButton
                 icon={Download}
@@ -134,7 +134,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="lg:col-span-4 relative flex items-center justify-center"
+            className="lg:col-span-4 relative flex items-center justify-center order-first lg:order-none mb-12 lg:mb-0"
           >
             {/* Decorative Rings */}
             <div className="absolute inset-0 flex items-center justify-center">

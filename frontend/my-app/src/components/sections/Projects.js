@@ -17,7 +17,7 @@ const Projects = () => {
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <section ref={containerRef} id="projects" className="py-32 relative overflow-hidden bg-[#020010]">
+    <section ref={containerRef} id="projects" className="py-20 lg:py-32 relative overflow-hidden bg-[#020010]">
       {/* Abstract Shapes */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-950/20 rounded-full blur-[100px] pointer-events-none"></div>
@@ -27,7 +27,7 @@ const Projects = () => {
           style={{ y: titleY }}
           className="mb-32 relative"
         >
-          <h2 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-purple-500 tracking-tighter">
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-purple-500 tracking-tighter">
             SELECTED <br /> WORKS
           </h2>
           <div className="absolute -bottom-8 left-0 w-32 h-1 bg-gradient-to-r from-purple-500 to-transparent"></div>
@@ -58,7 +58,7 @@ const Projects = () => {
 
             <motion.div
               layoutId={selectedId}
-              className="relative w-full max-w-5xl h-[85vh] bg-[#0c0c14] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col"
+              className="relative w-full max-w-5xl h-[90vh] md:h-[85vh] bg-[#0c0c14] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col"
               onClick={e => e.stopPropagation()}
             >
               {(() => {
@@ -79,7 +79,7 @@ const Projects = () => {
 
                     {/* Scrollable Content */}
                     <div className="flex-grow overflow-y-auto px-8 md:px-12 py-8 custom-scrollbar">
-                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{project.title}</h2>
+                      <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">{project.title}</h2>
 
                       <div className="grid md:grid-cols-3 gap-12">
                         <div className="md:col-span-2 space-y-8">
@@ -169,7 +169,7 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
 
         <div className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
           {/* Image Side */}
-          <div className={`relative h-[400px] lg:h-[500px] lg:w-1/2 overflow-hidden transition-all duration-1000 ${isFocused ? 'grayscale-0' : 'grayscale'}`}>
+          <div className={`relative h-[200px] md:h-[400px] lg:h-[500px] lg:w-1/2 overflow-hidden transition-all duration-1000 ${isFocused ? 'grayscale-0' : 'grayscale'}`}>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
             <Image
               src={project.image}
@@ -193,7 +193,7 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
           </div>
 
           {/* Content Side */}
-          <div className="p-10 lg:p-14 lg:w-1/2 flex flex-col justify-between relative bg-gradient-to-b from-[#0a0a12] to-[#05050a]">
+          <div className="p-5 md:p-10 lg:p-14 lg:w-1/2 flex flex-col justify-between relative bg-gradient-to-b from-[#0a0a12] to-[#05050a]">
             <div>
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.technologies.slice(0, 3).map(t => (
@@ -206,7 +206,7 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
                 ))}
               </div>
 
-              <h3 className={`text-4xl font-bold mb-6 transition-colors duration-500 ${isFocused ? 'text-white' : 'text-gray-500'
+              <h3 className={`text-xl md:text-4xl font-bold mb-4 lg:mb-6 transition-colors duration-500 ${isFocused ? 'text-white' : 'text-gray-500'
                 }`}>
                 {project.title}
               </h3>
