@@ -9,7 +9,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
     <>
       {/* Ambient Background */}
       <div className="absolute inset-0 -z-10">
-        <GlitterParticles 
+        <GlitterParticles
           particleCount={shouldReduceMotion ? 8 : 20}
           enableParallax={!shouldReduceMotion}
           enableShimmer={!shouldReduceMotion}
@@ -31,7 +31,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl"
           animate={{
             x: shouldReduceMotion ? 0 : -mousePosition.x,
             y: shouldReduceMotion ? 0 : -mousePosition.y,
@@ -48,7 +48,7 @@ export default function BackgroundEffects({ shouldReduceMotion, mousePosition })
 
       {/* Animated Grid */}
       <div className="absolute inset-0 -z-10">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.05)_1px,transparent_1px)] bg-[size:100px_100px]"
           animate={{ backgroundPosition: ['0px 0px', '100px 100px'] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
