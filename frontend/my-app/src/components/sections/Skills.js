@@ -9,6 +9,7 @@ import {
     Search, Zap, RefreshCw,
     Palette, FileText, Smartphone, Users
 } from 'lucide-react';
+import ScrollRevealText from '../ui/ScrollRevealText';
 
 const otherSkills = [
     { name: "Responsive Design", icon: <Smartphone className="w-4 h-4" /> },
@@ -103,13 +104,15 @@ const SkillCard = ({ category, icon, description, skills, index }) => {
                         {icon}
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white group-hover:text-purple-200 transition-colors">
-                            {category}
-                        </h3>
+                        <div className="text-xl font-bold text-white group-hover:text-purple-200 transition-colors">
+                            <ScrollRevealText text={category} className="inline-block" speed={0.03} />
+                        </div>
                     </div>
                 </div>
 
-                <p className="text-sm text-gray-400 mb-8 pl-1">{description}</p>
+                <div className="mb-8 pl-1">
+                    <ScrollRevealText text={description} className="text-sm text-gray-400" speed={0.02} />
+                </div>
 
                 <div className="space-y-4">
                     {skills.map((skill, i) => (
@@ -162,12 +165,19 @@ const Skills = () => {
                         className="flex flex-col md:flex-row md:items-end justify-between gap-6"
                     >
                         <div>
-                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-0">
-                                Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Arsenal</span>
-                            </h2>
-                            <p className="text-gray-400 max-w-lg text-lg leading-relaxed mt-4 md:mt-2">
-                                A curated stack of technologies I use to bring digital ideas to life with performance and scalability in mind.
-                            </p>
+                            <motion.h2
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-0"
+                            >
+                                Technical <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Arsenal</span>
+                            </motion.h2>
+                            <ScrollRevealText
+                                text="A curated stack of technologies I use to bring digital ideas to life with performance and scalability in mind."
+                                className="text-gray-400 max-w-lg text-lg leading-relaxed mt-4 md:mt-2"
+                                speed={0.02}
+                            />
                         </div>
                     </motion.div>
                 </div>

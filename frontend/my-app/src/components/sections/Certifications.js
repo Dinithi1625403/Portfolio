@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolioData';
 import { Award, BadgeCheck, Calendar } from 'lucide-react';
+import ScrollRevealText from '../ui/ScrollRevealText';
 
 const Certifications = () => {
   return (
@@ -16,9 +17,14 @@ const Certifications = () => {
           className="mb-12 md:mb-24 flex items-center justify-between"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-              Licensed & <span className="text-purple-500">Certified</span>
-            </h2>
+            <motion.h2
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
+            >
+              Licensed & <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Certified</span>
+            </motion.h2>
             <div className="h-1 w-32 bg-purple-500 rounded-full"></div>
           </div>
           <Award className="hidden md:block text-purple-900/20 w-32 h-32 -rotate-12" />

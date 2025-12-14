@@ -11,10 +11,10 @@ const AchievementCard = ({ item, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1.0, ease: "easeOut" }}
       className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center mb-20 lg:mb-32 relative z-10`}
     >
       {/* Image Side */}
@@ -103,9 +103,14 @@ const Achievements = () => {
               <span className="text-purple-400 uppercase tracking-[0.2em] text-sm font-bold">Excellence</span>
               <span className="h-px w-8 bg-purple-500/50"></span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6">
-              Honors & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Awards</span>
-            </h2>
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
+            >
+              Honors & <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Awards</span>
+            </motion.h2>
           </motion.div>
         </div>
 

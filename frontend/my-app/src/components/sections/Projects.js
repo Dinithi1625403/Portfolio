@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Plus, X, Github, ExternalLink, Layers } from 'lucide-react';
 import { portfolioData } from '@/data/portfolioData';
 import Image from 'next/image';
+import ScrollRevealText from '../ui/ScrollRevealText';
 
 const Projects = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -27,7 +28,7 @@ const Projects = () => {
           style={{ y: titleY }}
           className="mb-32 relative"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-purple-500 tracking-tighter">
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-purple-600 tracking-tighter">
             SELECTED <br /> WORKS
           </h2>
           <div className="absolute -bottom-8 left-0 w-32 h-1 bg-gradient-to-r from-purple-500 to-transparent"></div>
@@ -83,9 +84,11 @@ const Projects = () => {
 
                       <div className="grid md:grid-cols-3 gap-12">
                         <div className="md:col-span-2 space-y-8">
-                          <p className="text-gray-300 text-lg leading-relaxed">
-                            {project.description}
-                          </p>
+                          <ScrollRevealText
+                            text={project.description}
+                            className="text-gray-300 text-lg leading-relaxed"
+                            speed={0.01}
+                          />
 
                           {project.features && (
                             <div className="bg-white/5 rounded-2xl p-8 border border-white/5">
@@ -149,7 +152,7 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       onViewportEnter={() => setIsFocused(true)}
       onViewportLeave={() => setIsFocused(false)}
       className="group cursor-pointer perspective-1000"
@@ -192,12 +195,12 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
 
               <h3 className={`text-xl md:text-4xl font-bold mb-4 lg:mb-6 transition-colors duration-500 ${isFocused ? 'text-white' : 'text-gray-500'
                 }`}>
-                {project.title}
+                <ScrollRevealText text={project.title} className="inline-block" speed={0.05} />
               </h3>
 
-              <p className="text-gray-400 text-lg leading-relaxed line-clamp-3">
-                {project.description}
-              </p>
+              <div className="text-gray-400 text-lg leading-relaxed line-clamp-3">
+                <ScrollRevealText text={project.description} className="inline" speed={0.01} />
+              </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">

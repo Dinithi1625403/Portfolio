@@ -4,6 +4,7 @@ import {
   Code2, Zap, Layers, ArrowUpRight,
   Sparkles, Brain
 } from 'lucide-react';
+import ScrollRevealText from '../ui/ScrollRevealText';
 import { portfolioData } from '@/data/portfolioData';
 
 // Reusable Card Component with Hover Glow Effect
@@ -57,7 +58,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white max-w-5xl leading-[1.1]"
           >
-            Crafting logic with <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">precision</span>, designing with <span className="italic font-serif font-light text-purple-200">soul.</span>
+            Crafting logic with <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">precision</span>, designing with <span className="italic font-serif font-light text-purple-200">soul.</span>
           </motion.h2>
         </div>
 
@@ -71,11 +72,21 @@ const About = () => {
                 <div className="p-3.5 rounded-full bg-purple-500/5 border border-purple-500/10 text-purple-300">
                   <Brain size={24} />
                 </div>
-                <h3 className="text-2xl font-medium text-white tracking-wide">The Mindset</h3>
+                <div className="text-2xl font-medium text-white tracking-wide">
+                  <ScrollRevealText
+                    text="The Mindset"
+                    className="text-2xl font-medium text-white tracking-wide"
+                    speed={0.03}
+                  />
+                </div>
               </div>
-              <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light max-w-3xl">
-                Hello! I'm <span className="text-white font-normal">Dinithi Dewmini</span>. {portfolioData.personal.bio.replace("Hello! I'm Dinithi Dewmini,", "")}
-              </p>
+              <div className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light max-w-3xl">
+                <ScrollRevealText
+                  text={"Hello! I'm Dinithi Dewmini. " + portfolioData.personal.bio.replace("Hello! I'm Dinithi Dewmini,", "")}
+                  className="inline"
+                  speed={0.01}
+                />
+              </div>
             </div>
 
             <div className="mt-12 flex flex-wrap gap-3">
@@ -197,8 +208,8 @@ const About = () => {
               </div>
 
               <div className="py-6">
-                <h4 className="text-2xl font-bold text-white mb-3">Foundations set?</h4>
-                <p className="text-gray-400 text-sm leading-relaxed px-4">Let's build the future together.</p>
+                <ScrollRevealText text="Foundations set?" className="text-2xl font-bold text-white mb-3" speed={0.03} />
+                <ScrollRevealText text="Let's build the future together." className="text-gray-400 text-sm leading-relaxed px-4" speed={0.02} />
               </div>
 
               <a

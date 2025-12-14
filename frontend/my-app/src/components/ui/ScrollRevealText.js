@@ -15,18 +15,18 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, speed = 0.02
             opacity: 1,
             y: 0,
             transition: {
-                type: "spring",
-                damping: 20,
-                stiffness: 100,
+                type: "tween",
+                ease: "easeOut",
+                duration: 0.5,
             },
         },
         hidden: {
             opacity: 0,
             y: 10,
             transition: {
-                type: "spring",
-                damping: 20,
-                stiffness: 100,
+                type: "tween",
+                ease: "easeOut",
+                duration: 0.5,
             },
         },
     };
@@ -36,7 +36,7 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, speed = 0.02
             variants={container}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+            viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
             className={`flex flex-wrap ${className}`}
         >
             {text.split(" ").map((word, index) => (
