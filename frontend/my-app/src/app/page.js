@@ -62,6 +62,8 @@ export default function Home() {
         className="min-h-screen text-white relative"
       >
 
+
+
         <main className="relative z-10">
           <Hero />
 
@@ -116,8 +118,9 @@ export default function Home() {
 
 
         {/* Scroll to Top Button */}
-        <ScrollToTop />
       </motion.div>
+      <Navigation />
+      <ScrollToTop />
     </>
   );
 }

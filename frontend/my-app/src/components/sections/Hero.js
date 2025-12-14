@@ -31,7 +31,7 @@ export default function Hero() {
   const skills = ['React', 'Next.js', 'WordPress', 'Tailwind', 'Node.js', 'JavaScript'];
 
   return (
-    <section className="min-h-screen lg:h-screen relative overflow-hidden bg-black flex items-center justify-center py-20 lg:py-0">
+    <section id="home" className="min-h-screen lg:h-screen relative overflow-hidden bg-black flex items-center justify-center py-20 lg:py-0">
       {/* Background Effects */}
       <BackgroundEffects
         shouldReduceMotion={shouldReduceMotion}
@@ -81,7 +81,7 @@ export default function Hero() {
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
                   Dinithi <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
-                    Dewmini
+                    Dew
                   </span>
                 </h1>
               </motion.div>
