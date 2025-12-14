@@ -38,18 +38,18 @@ const Contact = () => {
               Have a project in mind? Let's build something extraordinary together.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-8 w-full">
               <div
-                className="group relative inline-flex items-center gap-4 p-4 pr-8 rounded-full bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all cursor-pointer overflow-hidden backdrop-blur-md"
+                className="group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 pr-8 rounded-3xl sm:rounded-full bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all cursor-pointer overflow-hidden backdrop-blur-md w-full max-w-md"
                 onClick={copyEmail}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 <div className="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
                   <Mail size={20} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                   <span className="text-xs text-gray-400 uppercase tracking-widest">Email Me</span>
-                  <span className="text-lg text-white font-medium">{portfolioData.personal.email}</span>
+                  <span className="text-base sm:text-lg text-white font-medium break-all">{portfolioData.personal.email}</span>
                 </div>
                 <div className="ml-4 text-gray-500 group-hover:text-white transition-colors">
                   {copied ? <Check size={20} /> : <Copy size={20} />}

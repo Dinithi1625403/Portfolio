@@ -7,32 +7,14 @@ import GlitterParticles from '../ui/GlitterParticles';
 import ScrollRevealText from '../ui/ScrollRevealText';
 
 const AchievementCard = ({ item, index }) => {
-  const ref = useRef(null);
-
-  // Create a scroll-linked animation for each card
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax effects based on scroll position of this specific card
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-
-  // Smooth out the motion
-  const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
-
   const isEven = index % 2 === 0;
 
   return (
     <motion.div
-      ref={ref}
-      style={{
-        opacity,
-        scale,
-        y: smoothY
-      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center mb-20 lg:mb-32 relative z-10`}
     >
       {/* Image Side */}
@@ -54,10 +36,10 @@ const AchievementCard = ({ item, index }) => {
           )}
 
           {/* Floating Badge */}
-          <div className="absolute top-6 left-6 z-20">
-            <div className="bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
-              <Trophy size={14} className="text-yellow-400" />
-              <span className="text-xs font-bold text-white uppercase tracking-wider">Honor</span>
+          <div className="absolute bottom-6 left-6 z-20">
+            <div className="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full flex items-center gap-2">
+              <Trophy size={14} className="text-purple-300" />
+              <span className="text-xs font-medium text-white tracking-wide uppercase">Award</span>
             </div>
           </div>
         </div>
@@ -82,19 +64,13 @@ const AchievementCard = ({ item, index }) => {
             />
           </div>
 
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm mb-6 hover:bg-white/[0.06] transition-colors duration-300">
+          <div className="mb-6 pl-4 border-l border-purple-500/30">
             <ScrollRevealText
               text={item.description}
               className="text-zinc-400 text-lg leading-relaxed text-left"
               delay={0.3}
               speed={0.01}
             />
-          </div>
-
-          <div className="flex items-center justify-center lg:justify-start gap-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} size={20} className="text-yellow-500 fill-yellow-500/20" />
-            ))}
           </div>
         </div>
       </div>

@@ -125,14 +125,7 @@ const Projects = () => {
                                 <ExternalLink size={16} className="opacity-50 group-hover:opacity-100" />
                               </a>
                             )}
-                            {project.liveUrl && (
-                              <a href={project.liveUrl} target="_blank" className="flex items-center justify-between w-full p-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-colors shadow-lg shadow-purple-900/20 group">
-                                <span className="flex items-center gap-3">
-                                  <ExternalLink size={20} /> Live Preview
-                                </span>
-                                <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                              </a>
-                            )}
+
                           </div>
                         </div>
                       </div>
@@ -178,18 +171,9 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
               className={`object-cover transform transition-transform duration-1000 ease-out ${isFocused ? 'scale-105' : 'scale-100'}`}
             />
 
-            <div className="absolute top-6 left-6 z-20">
-              <div className={`w-12 h-12 rounded-full backdrop-blur-md flex items-center justify-center border transition-colors duration-500 ${isFocused ? 'bg-purple-600/20 border-purple-500/50 text-purple-200' : 'bg-white/10 border-white/20 text-white'
-                }`}>
-                <span className="font-mono text-sm">0{index + 1}</span>
-              </div>
-            </div>
 
-            <div className="absolute bottom-6 left-6 z-20 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
-              <div className="px-6 py-3 rounded-full bg-purple-600 text-white font-medium flex items-center gap-2 shadow-lg shadow-purple-900/50">
-                View Case Study <ArrowUpRight size={18} />
-              </div>
-            </div>
+
+
           </div>
 
           {/* Content Side */}
@@ -216,23 +200,20 @@ const ProjectCard = ({ project, index, setSelectedId }) => {
               </p>
             </div>
 
-            <div className="mt-10 pt-10 border-t border-white/5 flex items-center justify-between">
-              <div className="flex gap-4">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} onClick={e => e.stopPropagation()} target="_blank" className="p-3 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
-                    <Github size={20} />
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a href={project.liveUrl} onClick={e => e.stopPropagation()} target="_blank" className="p-3 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
-                    <ExternalLink size={20} />
-                  </a>
-                )}
-              </div>
-              <div className={`font-medium flex items-center gap-2 transition-all duration-500 ${isFocused ? 'text-purple-400 opacity-100' : 'text-gray-600 opacity-50'
-                }`}>
-                Read more <Plus size={16} />
-              </div>
+            <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+              {project.githubUrl ? (
+                <a
+                  href={project.githubUrl}
+                  onClick={e => e.stopPropagation()}
+                  target="_blank"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-purple-600 hover:border-purple-500 hover:text-white text-zinc-400 transition-all duration-300 group/btn"
+                >
+                  <Github size={18} />
+                  <span className="text-sm font-medium">View Source</span>
+                </a>
+              ) : <div></div>}
+
+
             </div>
           </div>
         </div>

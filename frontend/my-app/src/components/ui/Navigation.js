@@ -6,8 +6,11 @@ import { Menu, X, Home, UserRound, Zap, Layers, BadgeCheck, Trophy, MessageCircl
 import { navigationItems } from '@/data/portfolioData';
 
 const centerNavItems = navigationItems.filter(item =>
-  ['Home', 'About', 'Projects', 'Achievements'].includes(item.name)
-);
+  ['Home', 'About', 'Achievements', 'Projects'].includes(item.name)
+).sort((a, b) => {
+  const order = ['Home', 'About', 'Achievements', 'Projects'];
+  return order.indexOf(a.name) - order.indexOf(b.name);
+});
 
 const contactItem = navigationItems.find(item => item.name === 'Contact');
 
