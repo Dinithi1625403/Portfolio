@@ -15,9 +15,12 @@ export default function GlitterParticles({
 }) {
   const shouldReduceMotion = useReducedMotion();
 
-  // Generate particles with memoization for performance
-  const particles = useMemo(() => {
-    if (shouldReduceMotion) return { layer1: [], layer2: [], layer3: [] };
+  // State for particles and sparkles to ensure client-side only generation
+  const [particles, setParticles] = React.useState({ layer1: [], layer2: [], layer3: [] });
+  const [sparkles, setSparkles] = React.useState([]);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
 
     const generateLayer = (count, sizeRange, opacityRange, speedMultiplier = 1) => {
       return Array.from({ length: count }, (_, i) => ({
@@ -36,14 +39,23 @@ export default function GlitterParticles({
       }));
     };
 
-    return {
+    setParticles({
       // Background layer - larger, slower particles
       layer1: generateLayer(Math.floor(particleCount * 0.3), [8, 16], [0.1, 0.3], 1.5),
       // Middle layer - medium particles
       layer2: generateLayer(Math.floor(particleCount * 0.4), [4, 10], [0.2, 0.5], 1.0),
       // Foreground layer - smaller, faster particles
       layer3: generateLayer(Math.floor(particleCount * 0.3), [2, 6], [0.3, 0.7], 0.7),
-    };
+    });
+
+    // Generate sparkles
+    const generatedSparkles = Array.from({ length: 6 }, (_, i) => ({
+      left: `${20 + i * 15 + Math.random() * 10}%`,
+      top: `${25 + i * 12 + Math.random() * 10}%`,
+      delay: i * 0.3 + Math.random() * 2
+    }));
+    setSparkles(generatedSparkles);
+
   }, [particleCount, shouldReduceMotion]);
 
   // Particle colors based on type
@@ -177,13 +189,13 @@ export default function GlitterParticles({
 
       {/* Additional glitter sparkle overlay */}
       <div className="absolute inset-0">
-        {Array.from({ length: 6 }).map((_, i) => (
+        {sparkles.map((sparkle, i) => (
           <motion.div
             key={`sparkle-${i}`}
             className="absolute w-1 h-1 bg-white rounded-full"
             style={{
-              left: `${20 + i * 15 + Math.random() * 10}%`,
-              top: `${25 + i * 12 + Math.random() * 10}%`,
+              left: sparkle.left,
+              top: sparkle.top,
               boxShadow: '0 0 6px rgba(255, 255, 255, 0.8), 0 0 12px rgba(139, 92, 246, 0.6)'
             }}
             animate={{
@@ -193,7 +205,7 @@ export default function GlitterParticles({
             transition={{
               duration: 1.5,
               repeat: Infinity,
-              delay: i * 0.3 + Math.random() * 2,
+              delay: sparkle.delay,
               ease: "easeInOut"
             }}
           />

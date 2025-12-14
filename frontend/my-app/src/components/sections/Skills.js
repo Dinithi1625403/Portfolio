@@ -11,15 +11,12 @@ import {
 } from 'lucide-react';
 import ScrollRevealText from '../ui/ScrollRevealText';
 
-const otherSkills = [
-    { name: "Responsive Design", icon: <Smartphone className="w-4 h-4" /> },
-    { name: "Search Engine Opt.", icon: <Search className="w-4 h-4" /> },
-    { name: "Accessibility", icon: <Users className="w-4 h-4" /> },
-    { name: "Performance Opt.", icon: <Zap className="w-4 h-4" /> },
-    { name: "Agile Workflow", icon: <RefreshCw className="w-4 h-4" /> },
-    { name: "UI/UX Design", icon: <Palette className="w-4 h-4" /> },
-    { name: "Technical Writing", icon: <FileText className="w-4 h-4" /> }
-];
+import { portfolioData } from '@/data/portfolioData';
+
+const otherSkills = portfolioData.softSkills.map(skill => ({
+    name: skill,
+    icon: <Users className="w-4 h-4" /> // Default icon
+}));
 
 const skillsData = [
     {
@@ -61,6 +58,26 @@ const skillsData = [
             { name: "Vercel", level: 90 },
             { name: "Postman", level: 88 }
         ]
+    },
+    {
+        category: "Soft Skills",
+        icon: <Users className="w-6 h-6" />,
+        description: "Interpersonal attributes & leadership",
+        skills: portfolioData.softSkills.map(skill => ({
+            name: skill,
+            level: {
+                "Problem Solving": 98,
+                "Team Collaboration": 95,
+                "Communication": 92,
+                "Project Management": 85,
+                "Leadership": 88,
+                "Adaptability": 94,
+                "Critical Thinking": 96,
+                "Innovation": 90,
+                "Time Management": 87,
+                "Mentoring": 85
+            }[skill] || 90
+        }))
     }
 ];
 

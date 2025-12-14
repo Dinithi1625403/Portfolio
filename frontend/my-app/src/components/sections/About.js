@@ -4,6 +4,7 @@ import {
   Code2, Zap, Layers, ArrowUpRight,
   Sparkles, Brain
 } from 'lucide-react';
+import Image from 'next/image';
 import ScrollRevealText from '../ui/ScrollRevealText';
 import { portfolioData } from '@/data/portfolioData';
 
@@ -69,8 +70,13 @@ const About = () => {
           <Card className="md:col-span-8 flex flex-col justify-between min-h-[300px] md:min-h-[400px]" delay={0.1}>
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-3.5 rounded-full bg-purple-500/5 border border-purple-500/10 text-purple-300">
-                  <Brain size={24} />
+                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-purple-500/20">
+                  <Image
+                    src={portfolioData.personal.profileImage}
+                    alt={portfolioData.personal.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="text-2xl font-medium text-white tracking-wide">
                   <ScrollRevealText
@@ -157,12 +163,7 @@ const About = () => {
                   <div className="text-5xl font-bold text-white mb-2 tracking-tight">{portfolioData.projects.length}+</div>
                   <div className="text-sm text-gray-500 uppercase tracking-widest">Projects</div>
                 </div>
-                <div className="col-span-2 pt-6 border-t border-white/5">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-white">100%</span>
-                  </div>
-                  <div className="text-sm text-gray-500 uppercase tracking-widest mt-1">Client Satisfaction</div>
-                </div>
+
               </div>
             </div>
           </Card>
@@ -188,13 +189,7 @@ const About = () => {
                 ))}
               </div>
 
-              <div className="mt-auto">
-                <p className="text-xs text-gray-500 uppercase tracking-widest mb-3">Currently Exploring</p>
-                <div className="p-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-transparent border border-purple-500/10 flex items-center justify-between group cursor-pointer hover:border-purple-500/30 transition-all">
-                  <span className="text-purple-200 font-medium">Advanced Systems Architecture</span>
-                  <ArrowUpRight size={16} className="text-purple-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </div>
-              </div>
+
             </div>
           </Card>
 

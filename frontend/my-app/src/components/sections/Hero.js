@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Github, Linkedin, Code2, Mail, Download, ArrowRight, Sparkles, Terminal, User, Briefcase, Cpu, Send, FileText } from 'lucide-react';
 import Image from 'next/image';
+import { portfolioData } from '@/data/portfolioData';
 import BackgroundEffects from './hero/BackgroundEffects';
 import ScrollIndicator from './hero/ScrollIndicator';
 
@@ -120,9 +121,17 @@ export default function Hero() {
                 href="/resume.pdf"
               />
               <div className="flex gap-3">
-                <SocialLink icon={Github} href="#" />
-                <SocialLink icon={Linkedin} href="#" />
-                <SocialLink icon={Mail} href="mailto:contact@example.com" />
+                {portfolioData.socialLinks.map((social, idx) => {
+                  const Icon = { Github, Linkedin, Mail }[social.icon];
+                  if (!Icon) return null;
+                  return (
+                    <SocialLink
+                      key={idx}
+                      icon={Icon}
+                      href={social.url}
+                    />
+                  );
+                })}
               </div>
             </motion.div>
 

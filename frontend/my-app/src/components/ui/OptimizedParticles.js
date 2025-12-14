@@ -1,5 +1,5 @@
 'use client';
-import { memo, useMemo } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 /**
@@ -9,10 +9,12 @@ const OptimizedParticles = memo(({ particleCount = 20, className = "" }) => {
   const shouldReduceMotion = useReducedMotion();
 
   // Generate particles with memoization
-  const particles = useMemo(() => {
-    if (shouldReduceMotion) return [];
-    
-    return Array.from({ length: particleCount }, (_, i) => ({
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       size: Math.random() * 4 + 2,
       x: Math.random() * 100,
@@ -21,6 +23,7 @@ const OptimizedParticles = memo(({ particleCount = 20, className = "" }) => {
       delay: Math.random() * 5,
       opacity: Math.random() * 0.5 + 0.1,
     }));
+    setParticles(newParticles);
   }, [particleCount, shouldReduceMotion]);
 
   if (shouldReduceMotion) {
@@ -81,15 +84,20 @@ OptimizedParticles.displayName = 'OptimizedParticles';
 const SimpleFloatingOrbs = memo(({ count = 3 }) => {
   const shouldReduceMotion = useReducedMotion();
 
-  const orbs = useMemo(() => {
-    return Array.from({ length: count }, (_, i) => ({
+  const [orbs, setOrbs] = useState([]);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const newOrbs = Array.from({ length: count }, (_, i) => ({
       id: i,
       size: 60 + Math.random() * 40,
       x: 10 + (i * 30) + Math.random() * 20,
       y: 20 + Math.random() * 60,
       duration: 8 + Math.random() * 4,
     }));
-  }, [count]);
+    setOrbs(newOrbs);
+  }, [count, shouldReduceMotion]);
 
   if (shouldReduceMotion) return null;
 

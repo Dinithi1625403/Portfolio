@@ -110,20 +110,30 @@ const Contact = () => {
               </div>
 
               <div className="flex gap-4 pt-4">
-                {[
-                  { Icon: Linkedin, href: "#" },
-                  { Icon: Github, href: "#" },
-                  { Icon: Twitter, href: "#" },
-                  { Icon: Instagram, href: "#" }
-                ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600 hover:border-purple-500 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <social.Icon size={20} />
-                  </a>
-                ))}
+                {portfolioData.socialLinks.map((social, idx) => {
+                  const Icon = {
+                    Github,
+                    Linkedin,
+                    Twitter,
+                    Instagram,
+                    Mail
+                  }[social.icon];
+
+                  if (!Icon) return null;
+
+                  return (
+                    <a
+                      key={idx}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`relative z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 hover:-translate-y-1 cursor-pointer ${social.color || 'hover:text-white hover:bg-purple-600 hover:border-purple-500'}`}
+                      aria-label={social.name}
+                    >
+                      <Icon size={20} />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </motion.div>

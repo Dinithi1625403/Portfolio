@@ -13,7 +13,7 @@ export const portfolioData = {
     {
       name: "GitHub",
       icon: "Github",
-      url: "https://github.com/Dinithi1625403",
+      url: "https://github.com/Dinithi1625403/",
       color: "hover:text-gray-400"
     },
     {
@@ -282,6 +282,8 @@ export const portfolioData = {
 export const navigationItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Education", href: "#education" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Certifications", href: "#certifications" },
