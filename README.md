@@ -51,7 +51,6 @@ It is crafted with a focus on modern web aesthetics, smooth animations, glassmor
 - **Library:** React
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
-- **WebGL / Graphics:** OGL
 - **Icons:** Lucide React
 
 ---
