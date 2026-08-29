@@ -88,7 +88,7 @@ const About = () => {
               </div>
               <div className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light max-w-3xl">
                 <ScrollRevealText
-                  text={"Hello! I'm Dinithi Dewmini. " + portfolioData.personal.bio.replace("Hello! I'm Dinithi Dewmini,", "")}
+                  text={"Hello! I'm Dinithi Dananjana. " + portfolioData.personal.bio.replace("Hello! I'm Dinithi Dananjana,", "")}
                   className="inline"
                   speed={0.01}
                 />

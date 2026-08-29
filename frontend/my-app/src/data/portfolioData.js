@@ -1,9 +1,9 @@
 export const portfolioData = {
   personal: {
-    name: "Dinithi Dewmini",
+    name: "Dinithi Dananjana",
     title: "Information Technology Student",
     subtitle: "Passionate about harnessing technology to solve real-world problems",
-    bio: "Hello! I'm Dinithi Dewmini, currently pursuing my undergraduate degree in Information Technology at the University of Moratuwa. Passionate about harnessing technology to solve real-world problems, I am constantly exploring new developments in the IT landscape and how they can be applied innovatively. I'm always eager to connect with like-minded professionals, mentors, and industry experts to exchange ideas, collaborate on projects, and explore potential career opportunities.",
+    bio: "Hello! I'm Dinithi Dananjana, currently pursuing my undergraduate degree in Information Technology at the University of Moratuwa. Passionate about harnessing technology to solve real-world problems, I am constantly exploring new developments in the IT landscape and how they can be applied innovatively. I'm always eager to connect with like-minded professionals, mentors, and industry experts to exchange ideas, collaborate on projects, and explore potential career opportunities.",
     location: "Gampaha District, Western Province, Sri Lanka",
     email: "dinithi1625403@gmail.com",
     phone: "0701167176",
@@ -19,7 +19,7 @@ export const portfolioData = {
     {
       name: "LinkedIn",
       icon: "Linkedin",
-      url: "https://www.linkedin.com/in/dinithi-dewmini-30280327b",
+      url: "https://www.linkedin.com/in/dinithi-dananjana-30280327b/",
       color: "hover:text-blue-500"
     },
     {

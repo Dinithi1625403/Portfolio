@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Dinithi Dewmini - Full Stack Developer Portfolio",
-  description: "Professional portfolio of Dinithi Dewmini, a passionate full stack developer specializing in React, Node.js, and modern web technologies. Discover my projects, skills, and experience in creating innovative digital solutions.",
+  title: "Dinithi Dananjana - Full Stack Developer Portfolio",
+  description: "Professional portfolio of Dinithi Dananjana, a passionate full stack developer specializing in React, Node.js, and modern web technologies. Discover my projects, skills, and experience in creating innovative digital solutions.",
   keywords: "portfolio, full stack developer, React, Next.js, Node.js, web development, JavaScript, TypeScript, frontend, backend, UI/UX, responsive design",
-  author: "Dinithi Dewmini",
-  creator: "Dinithi Dewmini",
-  publisher: "Dinithi Dewmini",
+  author: "Dinithi Dananjana",
+  creator: "Dinithi Dananjana",
+  publisher: "Dinithi Dananjana",
   formatDetection: {
     email: false,
     address: false,
@@ -29,16 +29,16 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Dinithi Dewmini - Full Stack Developer Portfolio",
+    title: "Dinithi Dananjana - Full Stack Developer Portfolio",
     description: "Professional portfolio showcasing full stack development projects and expertise in modern web technologies.",
     url: 'https://johndoe-portfolio.vercel.app',
-    siteName: 'Dinithi Dewmini Portfolio',
+    siteName: 'Dinithi Dananjana Portfolio',
     images: [
       {
         url: '/api/placeholder/1200/630',
         width: 1200,
         height: 630,
-        alt: 'Dinithi Dewmini - Full Stack Developer',
+        alt: 'Dinithi Dananjana - Full Stack Developer',
       },
     ],
     locale: 'en_US',
@@ -46,7 +46,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Dinithi Dewmini - Full Stack Developer Portfolio",
+    title: "Dinithi Dananjana - Full Stack Developer Portfolio",
     description: "Professional portfolio showcasing full stack development projects and expertise in modern web technologies.",
     creator: '@johndoe',
     images: ['/api/placeholder/1200/630'],

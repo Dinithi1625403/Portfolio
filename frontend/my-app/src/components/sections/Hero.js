@@ -82,7 +82,7 @@ export default function Hero() {
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
                   Dinithi <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
-                    Dewmini
+                    Dananjana
                   </span>
                 </h1>
               </motion.div>

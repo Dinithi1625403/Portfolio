@@ -233,7 +233,7 @@ const Contact = () => {
 
       {/* Footer minimal integration */}
       <div className="absolute bottom-6 left-0 right-0 text-center">
-        <p className="text-gray-600 text-sm">© {new Date().getFullYear()} Dinithi Dewmini. Crafted with purple magic.</p>
+        <p className="text-gray-600 text-sm">© {new Date().getFullYear()} Dinithi Dananjana. Crafted with purple magic.</p>
       </div>
     </section>
   );
