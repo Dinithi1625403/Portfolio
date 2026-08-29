@@ -48,7 +48,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-5 space-y-6 text-center lg:text-right"
+            className="lg:col-span-4 space-y-6 text-center lg:text-right"
           >
             {/* Status Badge */}
             <motion.div
@@ -79,9 +79,9 @@ export default function Hero() {
                 >
                   Hi, I'm
                 </motion.h3>
-                <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight tracking-tight">
                   Dinithi <br />
-                  <span className="inline-block pr-2 py-1 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-400 animate-gradient-x">
                     Dananjana
                   </span>
                 </h1>
@@ -216,7 +216,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 100 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-3 flex flex-col justify-center h-full"
+            className="lg:col-span-4 flex flex-col justify-center h-full"
           >
             <NavCard
               title="About Me"
